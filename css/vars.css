@@ -1,0 +1,46 @@
+/* ══════════════════════════════════
+   VARIABLES & RESETS
+══════════════════════════════════ */
+:root {
+  --pink: #f4b8b8;
+  --pink-light: #fce8e8;
+  --pink-mid: #e89898;
+  --brown: #5c3122;
+  --brown-dark: #3d1f10;
+  --brown-light: #9a6b5a;
+  --cream: #faf6f3;
+  --text: #2d1a12;
+  --text-muted: #7a5a4e;
+  --glass: rgba(255,255,255,0.38);
+  --glass-b: rgba(255,255,255,0.85);
+  --glass-s: 0 8px 32px rgba(92,49,34,.1), inset 0 1px 0 rgba(255,255,255,.98), inset 0 -1px 0 rgba(255,255,255,.2);
+  --blur: blur(40px) saturate(220%) brightness(1.04);
+  --r: 20px;
+  --rL: 28px;
+  --ease: .42s cubic-bezier(.4,0,.2,1);
+  --spring: .55s cubic-bezier(.34,1.56,.64,1);
+  --fd: 'Bebas Neue', sans-serif;
+  --fb: 'Outfit', sans-serif;
+  --nav: 88px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--fb); background: var(--cream); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+img  { max-width: 100%; height: auto; display: block; }
+a    { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* Contenuto sotto la navbar fissa */
+main {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--nav);
+  animation: pgFadeIn 0.35s ease both;
+}
+
+/* Immagine lazy non ancora caricata: placeholder grigio */
+img[data-src] {
+  background: rgba(92,49,34,.06);
+  min-height: 120px;
+}
