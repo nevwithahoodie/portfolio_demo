@@ -76,3 +76,104 @@ body.pg-eleonora .back:hover { color: #9080c0; }
 .ele-ig    { margin-top: 30px; display: inline-flex; align-items: center; gap: 9px; background: linear-gradient(135deg,#2d1b69,#6b2fa0,#b03060); color: #fff; padding: 11px 22px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all var(--ease); text-decoration: none; }
 .ele-ig:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(107,47,160,.4); }
 @media (max-width: 740px) { .ele-head { padding: 56px 18px 28px; } }
+
+/* ══════════════════════════════════
+   AURORA — EARTHY NATURAL PORTRAIT
+   Palette: Stone Beige · Dark Forest ·
+            Terracotta · Petrol · Powder Blue
+══════════════════════════════════ */
+body.pg-aurora {
+  background: linear-gradient(145deg, #e8e0d4 0%, #d4c9b8 40%, #c8bfb0 100%);
+  color: #2E3624;
+}
+body.pg-aurora .back { color: #50615F; }
+body.pg-aurora .back:hover { color: #2E3624; }
+
+/* Nav override — forest green */
+body.pg-aurora nav {
+  background: rgba(46,54,36,0.72);
+  backdrop-filter: blur(48px) saturate(180%);
+  -webkit-backdrop-filter: blur(48px) saturate(180%);
+  border: 1px solid rgba(171,188,198,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 40px rgba(0,0,0,.28);
+}
+body.pg-aurora nav .logo { color: #D2C7B7; }
+body.pg-aurora nav .logo span { color: #ABBCC6; }
+body.pg-aurora nav .nl { color: rgba(210,199,183,.55); }
+body.pg-aurora nav .nl:hover,
+body.pg-aurora nav .nl.active { color: #D2C7B7; background: rgba(255,255,255,.09); }
+body.pg-aurora nav .nav-about { background: #50615F; color: #D2C7B7 !important; }
+body.pg-aurora nav .burger span { background: #ABBCC6; }
+body.pg-aurora #mobile-menu { background: rgba(26,32,20,.96); }
+
+/* Hero layout (split, mirrors Beatrice) */
+.rora-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - var(--nav));
+}
+.rora-txt {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 56px; position: relative;
+}
+.rora-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: #50615F; margin-bottom: 18px;
+}
+.rora-title {
+  font-family: var(--fd);
+  font-size: clamp(66px, 8vw, 108px);
+  line-height: .9;
+  color: #2E3624;
+}
+.rora-quote {
+  font-size: 18px; font-style: italic;
+  color: #735C4A; margin-top: 26px; line-height: 1.82;
+  max-width: 380px;
+  border-left: 3px solid #ABBCC6;
+  padding-left: 18px;
+}
+.rora-ig {
+  margin-top: 34px; display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #50615F, #735C4A);
+  color: #D2C7B7; padding: 12px 24px; border-radius: 100px;
+  font-weight: 700; font-size: 13px; cursor: pointer;
+  transition: all var(--ease); text-decoration: none; width: fit-content;
+}
+.rora-ig:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(46,54,36,.32); }
+.rora-num {
+  position: absolute; bottom: -16px; right: 16px;
+  font-family: var(--fd); font-size: 120px;
+  color: rgba(80,97,95,.1); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.rora-img { position: relative; overflow: hidden; }
+.rora-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Grain overlay (subtle, earthy) */
+.rora-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: .45; pointer-events: none; mix-blend-mode: multiply;
+}
+
+.rora-gallery-hd {
+  padding: 56px 52px 24px;
+  font-family: var(--fd); font-size: 50px; color: #2E3624;
+}
+
+/* Aurora-tinted footer */
+footer.aurora {
+  background: rgba(46,54,36,.6);
+  border-top: 1px solid rgba(171,188,198,.12);
+  backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+}
+footer.aurora .ft-logo { color: #D2C7B7; }
+footer.aurora .ft-logo span { color: #ABBCC6; }
+footer.aurora p, footer.aurora .ft-copy,
+footer.aurora .ft-links-title, footer.aurora .ft-link { color: rgba(210,199,183,.5); }
+footer.aurora .ft-link:hover { color: #D2C7B7; }
+footer.aurora .ft-bottom { border-top-color: rgba(171,188,198,.1); }
+
+@media (max-width: 900px) { .rora-hero { grid-template-columns: 1fr; } .rora-img { aspect-ratio: 16/9; } }
+@media (max-width: 740px) { .rora-txt { padding: 48px 24px; } .rora-gallery-hd { padding: 40px 24px 16px; } }

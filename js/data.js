@@ -35,7 +35,10 @@ const PLACES = [
   { id:'verona',    label:'Verona',           sub:'Torre e palazzi',
     folder:'gallery/content/places/verona',      cover:'verona-01.webp',       photos: _seq('verona-', 7) },
   { id:'india',     label:'Virasat-e-Khalsa', sub:'Museo · India',
-    folder:'gallery/content/places/museo-india', cover:'museo-india-01.webp',  photos: _seq('museo-india-', 7) }
+    folder:'gallery/content/places/museo-india', cover:'museo-india-01.webp',  photos: _seq('museo-india-', 7) },
+  { id:'miramare',  label:'Castello di Miramare', sub:'Trieste · Adriatico',
+    folder:'gallery/content/places/castello-di-miramare', cover:'castello-di-miramare-01.webp',
+    photos: _seq('castello-di-miramare-', 7) }
 ];
 
 const PEOPLE_DATA = [
@@ -47,5 +50,8 @@ const PEOPLE_DATA = [
     photos: _seq('bikerfest-', 12), view:'bikerfest' },
   { id:'eleo',     label:'Eleonora',   sub:'Portrait — Dusk',
     folder:'gallery/content/people/eleonora', cover:'eleonora-01.webp',
-    photos: _seq('eleonora-', 4), view:'eleonora' }
+    photos: _seq('eleonora-', 4), view:'eleonora' },
+  { id:'aurora',   label:'Aurora',     sub:'Portrait — Earth & Light',
+    folder:'gallery/content/people/rora', cover:'rora-01.webp',
+    photos: _seq('rora-', 6), view:'aurora' }
 ];

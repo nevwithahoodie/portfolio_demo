@@ -4,7 +4,8 @@
 var PORTRAIT_URLS = {
   beatrice: 'masterpieces/beatrice.html',
   bfest:    'portraits/bikerfest.html',
-  eleo:     'portraits/eleonora.html'
+  eleo:     'portraits/eleonora.html',
+  aurora:   'portraits/aurora.html'
 };
 
 function initPeople() {
