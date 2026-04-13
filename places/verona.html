@@ -1,259 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verona &mdash; nevwithahoodie</title>
-    <meta
-      name="description"
-      content="Travel photography by Nev — Verona, historic city."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="nev took that — Verona" />
-    <meta
-      property="og:description"
-      content="Travel photography by Nev — Verona, historic city."
-    />
-    <meta
-      property="og:image"
-      content="https://nevwithahoodie.github.io/portfolio_demo/gallery/content/places/verona/verona-01.webp"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="nev took that — Verona" />
-    <meta
-      name="twitter:image"
-      content="https://nevwithahoodie.github.io/portfolio_demo/gallery/content/places/verona/verona-01.webp"
-    />
-    <link
-      rel="icon"
-      type="image/webp"
-      href="../gallery/system/assets/logo.webp"
-    />
-    <link rel="apple-touch-icon" href="../gallery/system/assets/logo.webp" />
-    <link rel="stylesheet" href="../css/vars.css" />
-    <link rel="stylesheet" href="../css/animations.css" />
-    <link rel="stylesheet" href="../css/nav.css" />
-    <link rel="stylesheet" href="../css/home.css" />
-    <link rel="stylesheet" href="../css/gallery.css" />
-    <link rel="stylesheet" href="../css/masterpieces.css" />
-    <link rel="stylesheet" href="../css/subpages.css" />
-    <link rel="stylesheet" href="../css/pages.css" />
-    <link rel="stylesheet" href="../css/ui.css" />
-  </head>
-  <body>
-    <div class="blobs" aria-hidden="true">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="blob b3"></div>
-    </div>
-    <div id="cookie-banner">
-      <div class="cookie-icon">&#127850;</div>
-      <div class="cookie-txt">
-        <strong>This site uses cookies</strong
-        ><span>No data sold or shared.</span>
-      </div>
-      <button class="cookie-btn" onclick="acceptCookies()">Got it</button>
-    </div>
-    <a id="git-float" href="../about.html"
-      ><div class="git-icon">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <rect x="2" y="4" width="20" height="16" rx="2" />
-          <path d="m2 7 10 7 10-7" />
-        </svg>
-      </div>
-      <div>
-        <div class="git-label">About me</div>
-        <div class="git-name">Get in touch</div>
-      </div></a
-    ><button
-      id="btt-fixed"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      aria-label="Back to top"
-    >
-      <svg
-        width="13"
-        height="13"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-      >
-        <path d="M12 19V5M5 12l7-7 7 7" />
-      </svg>
-      Top
-    </button>
-    <div id="cookie-toast">
-      <div class="ct-hearts">&#9825;</div>
-      <span>thanks for accepting!</span>
-    </div>
-    <div class="nav-wrapper">
-      <nav id="nav">
-        <a class="logo" href="../index.html">NEV<span>.</span></a>
-        <div class="nav-links">
-          <a class="nl" data-page="index" href="../index.html">Home</a>
-          <a class="nl" data-page="cars" href="../cars.html">Cars</a>
-          <a class="nl" data-page="places" href="../places.html">Places</a>
-          <a class="nl" data-page="portraits" href="../portraits.html"
-            >Portraits</a
-          >
-          <a class="nl" data-page="masterpieces" href="../masterpieces.html"
-            >Masterpieces</a
-          >
-          <a class="nl nav-about" data-page="about" href="../about.html"
-            >About</a
-          >
-        </div>
-        <div class="burger" onclick="toggleMenu()" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
-    </div>
-    <div id="mobile-menu">
-      <a class="nl" data-page="index" href="../index.html">Home</a>
-      <a class="nl" data-page="cars" href="../cars.html">Cars</a>
-      <a class="nl" data-page="places" href="../places.html">Places</a>
-      <a class="nl" data-page="portraits" href="../portraits.html">Portraits</a>
-      <a class="nl" data-page="masterpieces" href="../masterpieces.html"
-        >Masterpieces</a
-      >
-      <a class="nl nav-about" data-page="about" href="../about.html">About</a>
-    </div>
-    <div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
-      <button class="lb-x" onclick="lbClose()" aria-label="Close">
-        &#10005;</button
-      ><button class="lb-nav lb-p" onclick="lbNav(-1)" aria-label="Previous">
-        &#8249;</button
-      ><img id="lb-img" src="" alt="" /><button
-        class="lb-nav lb-n"
-        onclick="lbNav(1)"
-        aria-label="Next"
-      >
-        &#8250;
-      </button>
-      <div class="lb-lbl" id="lb-lbl"></div>
-      <div class="lb-cnt" id="lb-cnt"></div>
-    </div>
-    <main>
-      <a class="back" href="../places.html"
-        ><svg
-          width="15"
-          height="15"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <path d="M19 12H5M5 12l7-7M5 12l7 7" />
-        </svg>
-        Back to Places</a
-      >
-      <div class="ph">
-        <div class="ph-inner-glass">
-          <div class="ph-tag">Torre e palazzi</div>
-          <h1 class="ph-title">VERONA<span class="ac">.</span></h1>
-        </div>
-      </div>
-      <div class="mwrap">
-        <div class="masonry" id="pm" style="columns: 3 240px"></div>
-      </div>
-      <footer class="dark">
-        <div class="ft-inner">
-          <div class="ft-brand">
-            <div class="ft-logo">NEV<span>.</span></div>
-            <p>Travel photography by Nev.</p>
-            <div class="ft-social" style="margin-top: 14px">
-              <a
-                href="https://www.instagram.com/nev.shotz/"
-                target="_blank"
-                rel="noopener"
-                class="ft-soc-btn ig"
-                ><svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" /></svg
-              ></a>
-            </div>
-          </div>
-          <div class="ft-links">
-            <div class="ft-links-title">Contact</div>
-            <a class="ft-link" href="mailto:navpreet.singh1209@gmail.com"
-              ><svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m2 7 10 7 10-7" />
-              </svg>
-              navpreet.singh1209@gmail.com</a
-            ><a
-              class="ft-link"
-              href="https://www.instagram.com/nev.shotz/"
-              target="_blank"
-              rel="noopener"
-              ><svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
-              </svg>
-              @nev.shotz</a
-            >
-          </div>
-        </div>
-        <div class="ft-bottom">
-          <div class="ft-copy">&copy; 2026 nevwithahoodie.github.io</div>
-        </div>
-      </footer>
-    </main>
-    <script src="../js/lightbox.js"></script>
-    <script src="../js/masonry.js"></script>
-    <script src="../js/nav.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        buildMasonry(
-          document.getElementById("pm"),
-          [
-            "../gallery/content/places/verona/verona-01.webp",
-            "../gallery/content/places/verona/verona-02.webp",
-            "../gallery/content/places/verona/verona-03.webp",
-            "../gallery/content/places/verona/verona-04.webp",
-            "../gallery/content/places/verona/verona-05.webp",
-            "../gallery/content/places/verona/verona-06.webp",
-            "../gallery/content/places/verona/verona-07.webp",
-          ],
-          "Verona",
-        );
-      });
-    </script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verona — nevwithahoodie</title>
+<meta name="description" content="Travel photography by Nev — Verona, historic city.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="nev took that — Verona">
+<meta property="og:description" content="Travel photography by Nev — Verona, historic city.">
+<meta property="og:image" content="https://nevwithahoodie.github.io/portfolio_demo/gallery/content/places/verona/verona-01.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nev took that — Verona">
+<meta name="twitter:image" content="https://nevwithahoodie.github.io/portfolio_demo/gallery/content/places/verona/verona-01.webp">
+<link rel="icon" type="image/webp" href="../gallery/system/assets/logo.webp">
+<link rel="apple-touch-icon" href="../gallery/system/assets/logo.webp">
+<link rel="stylesheet" href="../css/vars.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/nav.css">
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/gallery.css">
+<link rel="stylesheet" href="../css/masterpieces.css">
+<link rel="stylesheet" href="../css/subpages.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/ui.css">
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div id="cookie-banner"><div class="cookie-icon">&#127850;</div><div class="cookie-txt"><strong>This site uses cookies</strong><span>No data sold or shared.</span></div><button class="cookie-btn" onclick="acceptCookies()">Got it</button></div>
+<a id="git-float" href="../about.html"><div class="git-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="git-label" translate="no">About me</div><div class="git-name" translate="no">Get in touch</div></div></a>
+<button id="btt-fixed" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Top</button>
+<div id="cookie-toast"><div class="ct-hearts">&#9825;</div><span>thanks for accepting!</span></div>
+<div id="nav-mount"></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="lb-x" onclick="lbClose()" aria-label="Close">&#10005;</button><button class="lb-nav lb-p" onclick="lbNav(-1)" aria-label="Previous">&#8249;</button><img id="lb-img" src="" alt=""><button class="lb-nav lb-n" onclick="lbNav(1)" aria-label="Next">&#8250;</button><div class="lb-lbl" id="lb-lbl"></div><div class="lb-cnt" id="lb-cnt"></div></div>
+<main>
+<a class="back" href="../places.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg> Back to Places</a>
+<div class="ph"><div class="ph-inner-glass"><div class="ph-tag">Torre e palazzi</div><h1 class="ph-title" translate="no">VERONA<span class="ac">.</span></h1></div></div>
+<div class="mwrap"><div class="masonry" id="pm" style="columns:3 240px;"></div></div>
+<div id="footer-mount" data-tagline="Travel photography by Nev." data-theme="dark"></div>
+</main>
+<script src="../js/lightbox.js"></script>
+<script src="../js/masonry.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/nav.js"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){buildMasonry(document.getElementById("pm"),["../gallery/content/places/verona/verona-01.webp","../gallery/content/places/verona/verona-02.webp","../gallery/content/places/verona/verona-03.webp","../gallery/content/places/verona/verona-04.webp","../gallery/content/places/verona/verona-05.webp","../gallery/content/places/verona/verona-06.webp","../gallery/content/places/verona/verona-07.webp"],"Verona");});</script>
+</body>
 </html>

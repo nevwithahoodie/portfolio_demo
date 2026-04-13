@@ -1,373 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About — nevwithahoodie</title>
-    <meta
-      name="description"
-      content="Navpreet Singh, 20 anni, fotografo autodidatta da Pordenone."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://nevwithahoodie.github.io/portfolio_demo/"
-    />
-    <meta property="og:title" content="nev took that — About" />
-    <meta
-      property="og:description"
-      content="Navpreet Singh, 20 anni, fotografo autodidatta da Pordenone."
-    />
-    <meta
-      property="og:image"
-      content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/misc/my-stuff-01.webp"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="nev took that — About" />
-    <meta
-      name="twitter:description"
-      content="Navpreet Singh, 20 anni, fotografo autodidatta da Pordenone."
-    />
-    <meta
-      name="twitter:image"
-      content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/misc/my-stuff-01.webp"
-    />
-    <link rel="icon" type="image/webp" href="gallery/system/assets/logo.webp" />
-    <link rel="apple-touch-icon" href="gallery/system/assets/logo.webp" />
-    <link rel="stylesheet" href="css/vars.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/gallery.css" />
-    <link rel="stylesheet" href="css/masterpieces.css" />
-    <link rel="stylesheet" href="css/subpages.css" />
-    <link rel="stylesheet" href="css/pages.css" />
-    <link rel="stylesheet" href="css/ui.css" />
-  </head>
-  <body>
-    <div class="blobs" aria-hidden="true">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="blob b3"></div>
-    </div>
-    <div id="cookie-banner">
-      <div class="cookie-icon">&#127850;</div>
-      <div class="cookie-txt">
-        <strong>This site uses cookies</strong
-        ><span>No data is sold or shared.</span>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — nevwithahoodie</title>
+<meta name="description" content="Navpreet Singh, 20 anni, fotografo autodidatta da Pordenone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="nev took that — About">
+<meta property="og:description" content="Navpreet Singh, 20 anni, fotografo autodidatta da Pordenone.">
+<meta property="og:image" content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/misc/my-stuff-01.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nev took that — About">
+<meta name="twitter:image" content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/misc/my-stuff-01.webp">
+<link rel="icon" type="image/webp" href="gallery/system/assets/logo.webp">
+<link rel="apple-touch-icon" href="gallery/system/assets/logo.webp">
+<link rel="stylesheet" href="css/vars.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/gallery.css">
+<link rel="stylesheet" href="css/masterpieces.css">
+<link rel="stylesheet" href="css/subpages.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/ui.css">
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div id="cookie-banner" role="region" aria-label="Cookie notice"><div class="cookie-icon">&#127850;</div><div class="cookie-txt"><strong>This site uses cookies</strong><span>No data is sold or shared with third parties.</span></div><button class="cookie-btn" onclick="acceptCookies()">Got it</button></div>
+<a id="git-float" href="about.html" aria-label="About me"><div class="git-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="git-label" translate="no">About me</div><div class="git-name" translate="no">Get in touch</div></div></a>
+<button id="btt-fixed" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Top</button>
+<div id="cookie-toast"><div class="ct-hearts">&#9825;</div><span>thanks for accepting!</span></div>
+<div id="nav-mount"></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-x" onclick="lbClose()" aria-label="Close lightbox">&#10005;</button>
+  <button class="lb-nav lb-p" onclick="lbNav(-1)" aria-label="Previous photo">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-nav lb-n" onclick="lbNav(1)" aria-label="Next photo">&#8250;</button>
+  <div class="lb-lbl" id="lb-lbl"></div>
+  <div class="lb-cnt" id="lb-cnt"></div>
+</div>
+<main>
+  <div class="about-grid">
+    <div>
+      <div class="ph-tag">The Photographer</div>
+      <div class="about-name" translate="no">I&rsquo;M<br>NEV.</div>
+      <p class="about-bio" lang="it">20 anni, 8 anni dietro l&rsquo;obiettivo. La fotografia per me non &egrave; un lavoro, &egrave; un modo di vedere il mondo. Ogni scatto &egrave; una ricerca: della luce giusta, del momento preciso, dell&rsquo;angolo che nessun altro ha visto prima.<br><br>Fotografo auto, luoghi e persone. Non per monetizzare, ma per crescere &mdash; tecnicamente e artisticamente. Il mio obiettivo &egrave; sempre lo stesso: fare una foto migliore dell&rsquo;ultima.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-n" translate="no">8+</div><div class="stat-l">Years Shooting</div></div>
+        <div class="stat"><div class="stat-n" translate="no">107</div><div class="stat-l">Photos</div></div>
+        <div class="stat"><div class="stat-n" translate="no">5</div><div class="stat-l">Categories</div></div>
+        <div class="stat"><div class="stat-n" translate="no">20</div><div class="stat-l">Years Old</div></div>
       </div>
-      <button class="cookie-btn" onclick="acceptCookies()">Got it</button>
     </div>
-    <a id="git-float" href="about.html"
-      ><div class="git-icon">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <rect x="2" y="4" width="20" height="16" rx="2" />
-          <path d="m2 7 10 7 10-7" />
-        </svg>
-      </div>
-      <div>
-        <div class="git-label">About me</div>
-        <div class="git-name">Get in touch</div>
-      </div></a
-    >
-    <button
-      id="btt-fixed"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      aria-label="Back to top"
-    >
-      <svg
-        width="13"
-        height="13"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-      >
-        <path d="M12 19V5M5 12l7-7 7 7" />
-      </svg>
-      Top
-    </button>
-    <div id="cookie-toast">
-      <div class="ct-hearts">&#9825;</div>
-      <span>thanks for accepting!</span>
-    </div>
-    <div class="nav-wrapper">
-      <nav id="nav">
-        <a class="logo" href="index.html">NEV<span>.</span></a>
-        <div class="nav-links">
-          <a class="nl" data-page="index" href="index.html">Home</a>
-          <a class="nl" data-page="cars" href="cars.html">Cars</a>
-          <a class="nl" data-page="places" href="places.html">Places</a>
-          <a class="nl" data-page="portraits" href="portraits.html"
-            >Portraits</a
-          >
-          <a class="nl" data-page="masterpieces" href="masterpieces.html"
-            >Masterpieces</a
-          >
-          <a class="nl nav-about" data-page="about" href="about.html">About</a>
-        </div>
-        <div class="burger" onclick="toggleMenu()" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
-    </div>
-    <div id="mobile-menu">
-      <a class="nl" data-page="index" href="index.html">Home</a>
-      <a class="nl" data-page="cars" href="cars.html">Cars</a>
-      <a class="nl" data-page="places" href="places.html">Places</a>
-      <a class="nl" data-page="portraits" href="portraits.html">Portraits</a>
-      <a class="nl" data-page="masterpieces" href="masterpieces.html"
-        >Masterpieces</a
-      >
-      <a class="nl nav-about" data-page="about" href="about.html">About</a>
-    </div>
-    <div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
-      <button class="lb-x" onclick="lbClose()" aria-label="Close">
-        &#10005;
-      </button>
-      <button
-        class="lb-nav lb-p"
-        onclick="lbNav(-1)"
-        aria-label="Previous photo"
-      >
-        &#8249;
-      </button>
-      <img id="lb-img" src="" alt="" />
-      <button class="lb-nav lb-n" onclick="lbNav(1)" aria-label="Next photo">
-        &#8250;
-      </button>
-      <div class="lb-lbl" id="lb-lbl"></div>
-      <div class="lb-cnt" id="lb-cnt"></div>
-    </div>
-    <main>
-      <div class="about-grid">
-        <div>
-          <div class="ph-tag">The Photographer</div>
-          <div class="about-name">I&rsquo;M<br />NEV.</div>
-          <p class="about-bio">
-            20 anni, 8 anni dietro l&rsquo;obiettivo. La fotografia per me non
-            &egrave; un lavoro, &egrave; un modo di vedere il mondo. Ogni scatto
-            &egrave; una ricerca: della luce giusta, del momento preciso,
-            dell&rsquo;angolo che nessun altro ha visto prima.<br /><br />Fotografo
-            auto, luoghi e persone. Non per monetizzare, ma per crescere &mdash;
-            tecnicamente e artisticamente. Il mio obiettivo &egrave; sempre lo
-            stesso: fare una foto migliore dell&rsquo;ultima.
-          </p>
-          <div class="about-stats">
-            <div class="stat">
-              <div class="stat-n">8+</div>
-              <div class="stat-l">Years Shooting</div>
-            </div>
-            <div class="stat">
-              <div class="stat-n">98</div>
-              <div class="stat-l">Photos in Portfolio</div>
-            </div>
-            <div class="stat">
-              <div class="stat-n">5</div>
-              <div class="stat-l">Categories</div>
-            </div>
-            <div class="stat">
-              <div class="stat-n">20</div>
-              <div class="stat-l">Years Old</div>
-            </div>
-          </div>
-        </div>
-        <div class="mwrap" style="padding: 0">
-          <div class="masonry" id="about-masonry"></div>
-        </div>
-      </div>
+    <div class="mwrap" style="padding:0"><div class="masonry" id="about-masonry"></div></div>
+  </div>
 
-      <div class="contact-section" id="contact">
-        <div class="contact-title">
-          GET IN<br /><span style="color: var(--pink-mid)">TOUCH.</span>
-        </div>
-        <p class="contact-sub">
-          Want to collaborate, have questions, or just want to say hi?
-          Here&rsquo;s where to find me.
-        </p>
-        <div class="contact-cards">
-          <a class="contact-card" href="mailto:navpreet.singh1209@gmail.com">
-            <div class="cc-icon em">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#faf6f3"
-                stroke-width="2"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m2 7 10 7 10-7" />
-              </svg>
-            </div>
-            <div class="cc-label">Email</div>
-            <div class="cc-value">navpreet.singh1209@gmail.com</div>
-          </a>
-          <a
-            class="contact-card"
-            href="https://www.instagram.com/nev.shotz/"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="cc-icon ig">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#fff"
-                stroke-width="2"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r=".5" fill="#fff" />
-              </svg>
-            </div>
-            <div class="cc-label">Instagram</div>
-            <div class="cc-value">@nev.shotz</div>
-          </a>
-        </div>
-        <a
-          class="collab-card"
-          href="https://www.instagram.com/pigeon.jfif/"
-          target="_blank"
-          rel="noopener"
-        >
-          <div class="collab-avatar">&#128570;</div>
-          <div class="collab-txt">
-            <div class="collab-lbl">Collab &middot; photographer</div>
-            <div class="collab-name">pigeon.jfif</div>
-            <div class="collab-sub">Check out my homie on Instagram</div>
-          </div>
-          <div class="collab-ig">
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
-            </svg>
-          </div>
-        </a>
+  <div class="contact-section" id="contact">
+    <div class="contact-title" translate="no">GET IN<br><span style="color:var(--pink-mid)">TOUCH.</span></div>
+    <p class="contact-sub">Want to collaborate, have questions, or just want to say hi? Here&rsquo;s where to find me.</p>
+    <div class="contact-cards">
+      <a class="contact-card" href="mailto:navpreet.singh1209@gmail.com">
+        <div class="cc-icon em"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#faf6f3" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+        <div class="cc-label">Email</div>
+        <div class="cc-value" translate="no">navpreet.singh1209@gmail.com</div>
+      </a>
+      <a class="contact-card" href="https://www.instagram.com/nev.shotz/" target="_blank" rel="noopener">
+        <div class="cc-icon ig"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#fff"/></svg></div>
+        <div class="cc-label">Instagram</div>
+        <div class="cc-value" translate="no">@nev.shotz</div>
+      </a>
+    </div>
+    <a class="collab-card" href="https://www.instagram.com/pigeon.jfif/" target="_blank" rel="noopener">
+      <div class="collab-avatar" aria-hidden="true">&#128570;</div>
+      <div class="collab-txt">
+        <div class="collab-lbl">Collab &middot; photographer</div>
+        <div class="collab-name" translate="no">pigeon.jfif</div>
+        <div class="collab-sub">Check out my homie on Instagram</div>
       </div>
+      <div class="collab-ig" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></div>
+    </a>
+  </div>
 
-      <footer>
-        <div class="ft-inner">
-          <div class="ft-brand">
-            <div class="ft-logo">NEV<span>.</span></div>
-            <p>
-              Photography by Navpreet Singh.<br />Cars, places &amp; people
-              &mdash; since 2016.
-            </p>
-            <div class="ft-social" style="margin-top: 14px">
-              <a
-                href="https://www.instagram.com/nev.shotz/"
-                target="_blank"
-                rel="noopener"
-                class="ft-soc-btn ig"
-                title="@nev.shotz"
-                ><svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" /></svg
-              ></a>
-            </div>
-          </div>
-          <div class="ft-links">
-            <div class="ft-links-title">Contact</div>
-            <a class="ft-link" href="mailto:navpreet.singh1209@gmail.com"
-              ><svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m2 7 10 7 10-7" />
-              </svg>
-              navpreet.singh1209@gmail.com</a
-            ><a
-              class="ft-link"
-              href="https://www.instagram.com/nev.shotz/"
-              target="_blank"
-              rel="noopener"
-              ><svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
-              </svg>
-              @nev.shotz</a
-            >
-          </div>
-        </div>
-        <div class="ft-bottom">
-          <div class="ft-copy">
-            &copy; 2026
-            <a
-              href="https://nevwithahoodie.github.io/portfolio_demo"
-              target="_blank"
-              >nevwithahoodie.github.io</a
-            >
-          </div>
-        </div>
-      </footer>
-    </main>
-    <script src="js/lightbox.js"></script>
-    <script src="js/masonry.js"></script>
-    <script src="js/nav.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        buildMasonry(
-          document.getElementById("about-masonry"),
-          [
-            "gallery/system/misc/my-stuff-01.webp",
-            "gallery/system/misc/my-stuff-02.webp",
-            "gallery/system/misc/my-stuff-03.webp",
-            "gallery/system/misc/my-stuff-04.webp",
-            "gallery/system/misc/my-stuff-05.webp",
-            "gallery/system/misc/my-stuff-06.webp",
-          ],
-          "Navpreet Singh",
-        );
-      });
-    </script>
-  </body>
+<div id="footer-mount" data-tagline="Photography by Navpreet Singh.<br>Cars, places &amp; people &mdash; since 2016." data-theme=""></div>
+</main>
+<script src="js/lightbox.js"></script>
+<script src="js/masonry.js"></script>
+<script src="js/components.js"></script>
+<script src="js/nav.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  buildMasonry(document.getElementById("about-masonry"),
+    ["gallery/system/misc/my-stuff-01.webp","gallery/system/misc/my-stuff-02.webp","gallery/system/misc/my-stuff-03.webp","gallery/system/misc/my-stuff-04.webp","gallery/system/misc/my-stuff-05.webp","gallery/system/misc/my-stuff-06.webp"], "Navpreet Singh");
+});
+</script>
+</body>
 </html>
