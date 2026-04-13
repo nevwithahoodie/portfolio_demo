@@ -4,57 +4,106 @@
 
 /* Background blobs */
 @keyframes bf {
-  0%   { transform: translate(0,0) scale(1); }
-  50%  { transform: translate(28px,-18px) scale(1.06); }
-  100% { transform: translate(-18px,28px) scale(.95); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(28px, -18px) scale(1.06);
+  }
+  100% {
+    transform: translate(-18px, 28px) scale(0.95);
+  }
 }
 
 /* Hero fade-slide-in */
 @keyframes fsi {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Scroll line marquee */
 @keyframes slm {
-  0%   { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* Bento card float */
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0px) translateZ(0); }
-  50%       { transform: translateY(-11px) translateZ(0); }
+  0%,
+  100% {
+    transform: translateY(0px) translateZ(0);
+  }
+  50% {
+    transform: translateY(-11px) translateZ(0);
+  }
 }
 
 /* Lightbox open */
 @keyframes lbin {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Cookie banner slide up */
 @keyframes slideUp {
-  from { opacity: 0; transform: translateX(-50%) translateY(30px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Typewriter cursor blink */
 @keyframes twBlink {
-  0%, 48%    { opacity: 1; }
-  50%, 100%  { opacity: 0; }
+  0%,
+  48% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Page header word reveal */
 @keyframes wordSlideUp {
-  from { transform: translateY(102%); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(102%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* ── PAGE FADE-IN ────────────────── */
 @keyframes pgFadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── VIEW TRANSITIONS API ────────── */
@@ -71,17 +120,31 @@
 }
 
 @keyframes vt-out {
-  to   { opacity: 0; transform: translateY(-6px); }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 }
 @keyframes vt-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
 }
 
 /* Reduced motion: disabilita tutto */
 @media (prefers-reduced-motion: reduce) {
-  .blob              { animation: none; }
-  .ccard             { animation: none !important; }
+  .blob {
+    animation: none;
+  }
+  .ccard {
+    animation: none !important;
+  }
   ::view-transition-old(root),
-  ::view-transition-new(root) { animation: none; }
-  main               { animation: none !important; }
+  ::view-transition-new(root) {
+    animation: none;
+  }
+  main {
+    animation: none !important;
+  }
 }

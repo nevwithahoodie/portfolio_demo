@@ -1,0 +1,24 @@
+{
+  "name": "portoflio-demo",
+  "version": "1.0.0",
+  "description": "> Guida totale al progetto: ogni file, ogni funzione, dove mettere le foto, come aggiungere contenuti, come funziona tutto sotto il cofano.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nevwithahoodie/portfolio_demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nevwithahoodie/portfolio_demo/issues"
+  },
+  "homepage": "https://github.com/nevwithahoodie/portfolio_demo#readme",
+  "devDependencies": {
+    "prettier": "^3.8.2"
+  }
+}

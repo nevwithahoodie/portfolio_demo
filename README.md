@@ -104,6 +104,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 **Ogni pagina è un file HTML autonomo.** Non ci sono ancore `#hash` o SPA (Single Page Application). Navigare da `cars.html` a `places.html` è una normale navigazione browser — la pagina si ricarica.
 
 **Flusso di una pagina qualsiasi:**
+
 1. Il browser carica il file `.html`
 2. Il file include i CSS dalla cartella `/css/` → applica gli stili
 3. Il file include i JS dalla cartella `/js/` → esegue la logica
@@ -111,6 +112,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 5. Al `DOMContentLoaded`, la funzione di init specifica della pagina popola il contenuto dinamico (foto, filtri, ecc.)
 
 **Dove vivono i dati:**
+
 - Le foto → cartella `assets/` sul filesystem / repo
 - I metadati delle foto (nomi, path, colori) → `js/data.js` (per Cars, Places, Portraits)
 - I dati delle sottopagine (Beatrice, P911, ecc.) → direttamente nell'HTML di quella pagina, come array JS inline
@@ -121,6 +123,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 ## 3. Pagine HTML — cosa fa ognuna
 
 ### `index.html` — Home
+
 - Contiene l'**hero** con l'animazione typewriter ("NEV TOOK THAT.")
 - Contiene il **bento grid** con 5 card cliccabili che portano alle sezioni
 - Carica: `nav.js`, `animations.js`
@@ -129,6 +132,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 - I link delle card sono `<a href="cars.html">`, `<a href="places.html">` ecc. — link statici, niente JS
 
 ### `cars.html` — Automotive
+
 - Contiene il **loader** (barra di caricamento animata) che appare mentre le immagini si caricano
 - Contiene la **filter bar** (pill per filtrare per modello) e la **masonry** (griglia foto)
 - Carica: `data.js`, `lightbox.js`, `masonry.js`, `cars.js`, `nav.js`
@@ -136,26 +140,29 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 - `initCars()` costruisce i filtri leggendo `CARS` da `data.js` e riempie la masonry con le foto
 
 ### `places.html` — Luoghi
+
 - Contiene una **griglia di card** (una per ogni luogo), ognuna cliccabile → porta a `places/nomeluogo.html`
 - Carica: `data.js`, `places.js`, `nav.js`
 - Al `DOMContentLoaded` chiama `initPlaces()`
 - `initPlaces()` costruisce le card leggendo `PLACES` da `data.js`
 
 ### `places/cansiglio.html`, `molveno.html`, `verona.html`, `india.html` — Sottopagine luoghi
+
 - Ognuna ha un **back button** → torna a `places.html`
 - Contiene una **masonry** con tutte le foto del posto
 - **NON carica `data.js`**: l'array delle foto è scritto direttamente nell'HTML della pagina come script inline:
   ```html
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var photos = ['../assets/luoghi/molveno/foto1.jpg', ...];
-    buildMasonry(document.getElementById('pm'), photos, 'Molveno');
-  });
+    document.addEventListener('DOMContentLoaded', function() {
+      var photos = ['../assets/luoghi/molveno/foto1.jpg', ...];
+      buildMasonry(document.getElementById('pm'), photos, 'Molveno');
+    });
   </script>
   ```
 - Carica: `lightbox.js`, `masonry.js`, `nav.js`
 
 ### `portraits.html` — Ritratti
+
 - Come `places.html` ma per le sessioni ritratto
 - Carica: `data.js`, `people.js`, `nav.js`
 - Al `DOMContentLoaded` chiama `initPeople()`
@@ -163,17 +170,20 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 - Bikerfest → `portraits/bikerfest.html`, Eleonora → `portraits/eleonora.html`
 
 ### `portraits/bikerfest.html` — Biker Fest
+
 - Tema dark (`body class="theme-dark pg-bikerfest"`)
 - Back button → `portraits.html`
 - Array foto inline, costruisce la masonry
 - Footer dark con link a @killingklub
 
 ### `portraits/eleonora.html` — Eleonora
+
 - Tema purple (`body class="theme-purple pg-eleonora"`)
 - Back button → `portraits.html`
 - Masonry a 2 colonne (invece di 3)
 
 ### `masterpieces.html` — Masterpieces
+
 - Tema dark gold (`body class="theme-dark pg-masterpieces"`)
 - Ha il `<canvas id="mp-petals">` per i petali animati
 - Carica: `animations.js`, `nav.js`
@@ -181,6 +191,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 - Le due card cliccano su `masterpieces/porsche911.html` e `masterpieces/beatrice.html`
 
 ### `masterpieces/beatrice.html` — Beatrice
+
 - Tema gold (`body class="theme-gold pg-beatrice"`)
 - Ha un layout split: testo a sinistra, foto hero a destra
 - Back button → `masterpieces.html`
@@ -188,6 +199,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 - Footer gold con link a @beaniaka
 
 ### `masterpieces/porsche911.html` — Porsche 911
+
 - Tema dark (`body class="theme-dark pg-porsche911"`)
 - Layout **parallax a 3 colonne** (le colonne si muovono a velocità diverse sullo scroll)
 - Back button → `masterpieces.html`
@@ -195,6 +207,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 - Script inline gestisce il parallax con `requestAnimationFrame`
 
 ### `about.html` — About + Contatti
+
 - Griglia 2 colonne: bio + stats a sinistra, masonry foto personali a destra
 - Sezione contatti con card per email e Instagram
 - Card collab (pigeon.jfif)
@@ -206,6 +219,7 @@ Il sito è **completamente statico**: nessun server, nessun database, nessun bui
 ## 4. JavaScript — file per file, funzione per funzione
 
 ### `js/data.js` ⭐ IL FILE PIÙ IMPORTANTE
+
 **Caricato da:** `cars.html`, `places.html`, `portraits.html`
 
 Contiene tre array globali con tutti i metadati delle foto.
@@ -213,20 +227,22 @@ Contiene tre array globali con tutti i metadati delle foto.
 ---
 
 #### Array `CARS`
+
 Ogni oggetto rappresenta un modello di auto:
 
-| Proprietà | Tipo | Significato |
-|---|---|---|
-| `id` | stringa | Identificatore unico (usato internamente per il filtro) |
-| `label` | stringa | Nome visualizzato nella pill del filtro |
-| `sub` | stringa | Sottotitolo/descrizione breve |
-| `accent` | colore hex | Colore di sfondo della pill quando attiva |
-| `dot` | colore hex | Colore del pallino colorato nella pill |
-| `folder` | path | Cartella delle foto relativa alla root (`assets/macchine/...`) |
-| `photos` | array di stringhe | Lista dei nomi file delle foto, nell'ordine in cui appaiono |
-| `masterpiece` | booleano (opzionale) | Se `true`, mostra la stella ★ nella pill |
+| Proprietà     | Tipo                 | Significato                                                    |
+| ------------- | -------------------- | -------------------------------------------------------------- |
+| `id`          | stringa              | Identificatore unico (usato internamente per il filtro)        |
+| `label`       | stringa              | Nome visualizzato nella pill del filtro                        |
+| `sub`         | stringa              | Sottotitolo/descrizione breve                                  |
+| `accent`      | colore hex           | Colore di sfondo della pill quando attiva                      |
+| `dot`         | colore hex           | Colore del pallino colorato nella pill                         |
+| `folder`      | path                 | Cartella delle foto relativa alla root (`assets/macchine/...`) |
+| `photos`      | array di stringhe    | Lista dei nomi file delle foto, nell'ordine in cui appaiono    |
+| `masterpiece` | booleano (opzionale) | Se `true`, mostra la stella ★ nella pill                       |
 
 **Esempio per aggiungere un nuovo modello:**
+
 ```js
 { id:'ferrari', label:'Ferrari 308', sub:'Rosso Corsa',
   accent:'#8b0000', dot:'#cc0000',
@@ -237,52 +253,57 @@ Ogni oggetto rappresenta un modello di auto:
 ---
 
 #### Array `PLACES`
+
 Ogni oggetto rappresenta un luogo:
 
-| Proprietà | Tipo | Significato |
-|---|---|---|
-| `id` | stringa | Identificatore — deve corrispondere al nome del file HTML in `places/` |
-| `label` | stringa | Nome del luogo visualizzato nella card |
-| `sub` | stringa | Descrizione breve (es. "Paesaggio alpino") |
-| `folder` | path | Cartella delle foto |
-| `cover` | stringa | Nome del file usato come immagine di copertina della card |
-| `photos` | array di stringhe | Lista dei nomi file delle foto |
+| Proprietà | Tipo              | Significato                                                            |
+| --------- | ----------------- | ---------------------------------------------------------------------- |
+| `id`      | stringa           | Identificatore — deve corrispondere al nome del file HTML in `places/` |
+| `label`   | stringa           | Nome del luogo visualizzato nella card                                 |
+| `sub`     | stringa           | Descrizione breve (es. "Paesaggio alpino")                             |
+| `folder`  | path              | Cartella delle foto                                                    |
+| `cover`   | stringa           | Nome del file usato come immagine di copertina della card              |
+| `photos`  | array di stringhe | Lista dei nomi file delle foto                                         |
 
 **Nota importante:** l'`id` deve corrispondere al file HTML in `places/`. Se aggiungi `id:'venezia'` devi anche creare `places/venezia.html`.
 
 ---
 
 #### Array `PEOPLE_DATA`
+
 Ogni oggetto rappresenta una sessione ritratto:
 
-| Proprietà | Tipo | Significato |
-|---|---|---|
-| `id` | stringa | Identificatore interno |
-| `label` | stringa | Nome visualizzato nella card |
-| `sub` | stringa | Descrizione breve |
-| `folder` | path | Cartella delle foto |
-| `cover` | stringa | Nome del file copertina |
-| `photos` | array di stringhe | Lista delle foto |
-| `masterpiece` | booleano (opzionale) | Se `true`, mostra badge "★ Masterpiece" sulla card |
-| `view` | stringa | Destinazione al click: `'beatrice'`, `'bikerfest'`, `'eleonora'` |
+| Proprietà     | Tipo                 | Significato                                                      |
+| ------------- | -------------------- | ---------------------------------------------------------------- |
+| `id`          | stringa              | Identificatore interno                                           |
+| `label`       | stringa              | Nome visualizzato nella card                                     |
+| `sub`         | stringa              | Descrizione breve                                                |
+| `folder`      | path                 | Cartella delle foto                                              |
+| `cover`       | stringa              | Nome del file copertina                                          |
+| `photos`      | array di stringhe    | Lista delle foto                                                 |
+| `masterpiece` | booleano (opzionale) | Se `true`, mostra badge "★ Masterpiece" sulla card               |
+| `view`        | stringa              | Destinazione al click: `'beatrice'`, `'bikerfest'`, `'eleonora'` |
 
 Il campo `view` mappa verso le URL reali in `js/people.js`:
+
 ```js
 var PORTRAIT_URLS = {
-  beatrice: 'masterpieces/beatrice.html',
-  bfest:    'portraits/bikerfest.html',
-  eleo:     'portraits/eleonora.html'
+  beatrice: "masterpieces/beatrice.html",
+  bfest: "portraits/bikerfest.html",
+  eleo: "portraits/eleonora.html",
 };
 ```
 
 ---
 
 ### `js/nav.js`
+
 **Caricato da:** tutte le pagine
 
 Gestisce tutto ciò che è condiviso tra le pagine: navbar, cookie, scroll, rivelazioni.
 
 #### IIFE di inizializzazione nav (si esegue subito al caricamento)
+
 Legge il filename dalla URL (`location.pathname.split('/').pop()`) e imposta il link attivo nella navbar tramite `data-page`. Usa `parentMap` per le sottopagine: ad esempio `cansiglio` → padre è `places`, quindi evidenzia il link "Places".
 
 ```
@@ -293,102 +314,128 @@ parentMap = {
   beatrice  → 'masterpieces', porsche911 → 'masterpieces'
 }
 ```
+
 Applica anche il tema alla navbar leggendo la classe `theme-dark/gold/purple` dal `<body>`.
 
 #### `toggleMenu()`
+
 Apre/chiude il menu mobile (`#mobile-menu`). Sincronizza il tema del menu con quello della navbar (es. se la navbar è dark, anche il menu è dark).
 
 #### `closeMobileMenu()`
+
 Rimuove la classe `.open` dal menu mobile. Chiamata automaticamente dai link del menu.
 
 #### `trigReveal()`
+
 Scorre tutti gli elementi con classe `.reveal` visibili nella viewport e aggiunge `.vis` per attivare la transizione CSS di apparizione. Chiamata allo scroll e al `DOMContentLoaded`.
 
 #### IIFE Back-to-top
+
 Ascolta lo scroll: se si scende oltre 300px aggiunge `.visible` al bottone `#btt-fixed`, altrimenti la toglie.
 
 #### `acceptCookies()`
+
 1. Salva `cookieAccepted = '1'` in `localStorage`
 2. Nasconde il banner `#cookie-banner`
 3. Mostra il toast di ringraziamento con animazione cuoricini per 2 secondi
 
 #### IIFE "hide se già accettato"
+
 Si esegue subito (non aspetta DOMContentLoaded): se `localStorage.getItem('cookieAccepted')` esiste, nasconde il banner prima ancora che si veda.
 
 #### DOMContentLoaded — word reveal
+
 Al caricamento della pagina, cerca il titolo principale (qualsiasi selector tra `.ph-title`, `.bea-title`, `.bf-title` ecc.) e lo anima parola per parola con un `@keyframes wordSlideUp`.
 
 ---
 
 ### `js/lightbox.js`
+
 **Caricato da:** tutte le pagine tranne `index.html` e `masterpieces.html`
 
 Gestisce il lightbox (visualizzatore foto a schermo intero).
 
 #### Variabili di stato
+
 ```js
-let _lbPhotos = [];   // array di path delle foto dell'album corrente
-let _lbIdx    = 0;    // indice della foto attualmente visualizzata
-let _lbLbl    = '';   // etichetta dell'album (es. "Beatrice")
+let _lbPhotos = []; // array di path delle foto dell'album corrente
+let _lbIdx = 0; // indice della foto attualmente visualizzata
+let _lbLbl = ""; // etichetta dell'album (es. "Beatrice")
 ```
 
 #### `lbOpen(photos, idx, lbl)`
+
 Apre il lightbox con un album di foto.
+
 - `photos`: array di path (es. `['assets/persone/Beatrice/foto1.heic', ...]`)
 - `idx`: indice della foto su cui si è cliccato
 - `lbl`: nome da mostrare come etichetta
-Aggiunge `.open` a `#lb` e blocca lo scroll del body.
+  Aggiunge `.open` a `#lb` e blocca lo scroll del body.
 
 #### `lbClose()`
+
 Rimuove `.open` da `#lb` e riabilita lo scroll.
 
 #### `lbNav(direzione)`
+
 Naviga tra le foto: `lbNav(1)` → prossima, `lbNav(-1)` → precedente. Wrap circolare.
 
 #### `_lbRender()` (privata)
+
 Aggiorna `src` dell'immagine, l'etichetta e il contatore "X / Y".
 
 #### Event listeners
+
 - Click sull'overlay (fuori dall'immagine) → chiude
 - Tastiera: `Escape` → chiude, `←` → precedente, `→` → prossima
 
 ---
 
 ### `js/masonry.js`
+
 **Caricato da:** tutte le pagine con gallerie
 
 Contiene una sola funzione.
 
 #### `buildMasonry(el, photos, lbl)`
+
 Riempie un elemento DOM con la griglia masonry.
+
 - `el`: il `<div class="masonry">` da popolare
 - `photos`: array di path completi delle foto
 - `lbl`: testo del badge che appare all'hover su ogni foto
 
 Per ogni foto crea:
+
 ```html
 <div class="mi">
-  <img src="..." alt="...">
+  <img src="..." alt="..." />
   <div class="mi-ov">
     <span class="mi-badge">Beatrice</span>
   </div>
 </div>
 ```
+
 Aggiunge un event listener su ogni `.mi`: al click chiama `lbOpen(photos, i, lbl)` — apre il lightbox sull'immagine cliccata, passando l'intero array per la navigazione.
 
 ---
 
 ### `js/animations.js`
+
 **Caricato da:** `index.html`, `masterpieces.html`
 
 #### `runTypewriter()`
+
 Anima il titolo hero della homepage lettera per lettera. Le lettere di "TOOK" sono colorate con `--pink-mid`. Una volta finita la digitazione, il cursore lampeggiante viene rimosso.
 
 #### `animatePageTitle(viewId)`
+
 **Non più usata** nel sito multi-pagina (era per la SPA). Rimasta per compatibilità, non crea problemi.
 
 #### `startPetals()`
+
 Avvia il sistema di particelle su `<canvas id="mp-petals">` nella pagina Masterpieces.
+
 - Crea 28 petali iniziali in posizioni random
 - Ogni petalo ha: posizione, velocità, rotazione, colore (rosa/oro), opacità
 - Il loop `requestAnimationFrame` aggiorna la posizione di ogni petalo ogni frame
@@ -396,20 +443,25 @@ Avvia il sistema di particelle su `<canvas id="mp-petals">` nella pagina Masterp
 - Il canvas si ridimensiona automaticamente al resize della finestra
 
 #### `stopPetals()`
+
 Ferma il loop di animazione, svuota l'array dei petali, pulisce il canvas. Chiamata quando si lascia la pagina Masterpieces (non applicabile nel sito multi-pagina).
 
 ---
 
 ### `js/cars.js`
+
 **Caricato da:** `cars.html`
 
 #### Variabile di stato
+
 ```js
-let _carFilter = 'all';   // filtro attivo corrente
+let _carFilter = "all"; // filtro attivo corrente
 ```
+
 Questa variabile rimane in memoria durante la sessione: se filtri per "Miata" e poi navighi via e torni, il filtro è resettato (la variabile è reinizializzata al caricamento della pagina).
 
 #### `initCars()`
+
 1. Mostra il loader `#cars-loader`
 2. Costruisce la filter bar `#fbar`: una pill "All Cars" + una pill per ogni auto in `CARS`
 3. Determina quali auto mostrare: se `_carFilter === 'all'` → tutte, altrimenti solo quella con l'id corrispondente
@@ -418,15 +470,19 @@ Questa variabile rimane in memoria durante la sessione: se filtri per "Miata" e 
 6. Quando tutte le immagini sono caricate (o in errore), nasconde il loader con `loader.classList.add('hidden')`
 
 #### `filterCars(id)`
+
 Imposta `_carFilter = id` e richiama `initCars()` per ricostruire la pagina con il nuovo filtro.
 
 ---
 
 ### `js/places.js`
+
 **Caricato da:** `places.html`
 
 #### `initPlaces()`
+
 Costruisce la griglia `#places-grid` leggendo l'array `PLACES` da `data.js`. Ogni card ha:
+
 - Immagine cover
 - Nome del luogo
 - Numero foto · sottotitolo
@@ -437,19 +493,23 @@ Al click: `window.location.href = 'places/' + pl.id + '.html'` — navigazione n
 ---
 
 ### `js/people.js`
+
 **Caricato da:** `portraits.html`
 
 #### `PORTRAIT_URLS` (oggetto costante)
+
 ```js
 var PORTRAIT_URLS = {
-  beatrice: 'masterpieces/beatrice.html',
-  bfest:    'portraits/bikerfest.html',
-  eleo:     'portraits/eleonora.html'
+  beatrice: "masterpieces/beatrice.html",
+  bfest: "portraits/bikerfest.html",
+  eleo: "portraits/eleonora.html",
 };
 ```
+
 Mappa `id` → URL della pagina dedicata. Da aggiornare se aggiungi sessioni.
 
 #### `initPeople()`
+
 Come `initPlaces()` ma per `PEOPLE_DATA`. Le card con `masterpiece: true` mostrano il badge dorato.
 
 ---
@@ -457,54 +517,58 @@ Come `initPlaces()` ma per `PEOPLE_DATA`. Le card con `masterpiece: true` mostra
 ## 5. CSS — file per file
 
 ### `css/vars.css`
+
 **Caricato da:** tutte le pagine (sempre il primo)
 
 Definisce tutte le **variabili CSS globali** usate in ogni altro file CSS. Se vuoi cambiare i colori del sito, questo è l'unico file da toccare.
 
-| Variabile | Valore default | Descrizione |
-|---|---|---|
-| `--pink` | `#f4b8b8` | Rosa chiaro (sfondo blob) |
-| `--pink-mid` | `#e89898` | Rosa medio (accenti, "TOOK") |
-| `--brown-dark` | `#3d1f10` | Bruno scuro (testo principale, bottoni) |
-| `--brown` | `#5c3122` | Bruno medio (hover) |
-| `--brown-light` | `#9a6b5a` | Bruno chiaro (testo secondario) |
-| `--cream` | `#faf6f3` | Crema (sfondo body) |
-| `--text` | `#2d1a12` | Colore testo principale |
-| `--text-muted` | `#7a5a4e` | Colore testo secondario |
-| `--r` | `20px` | Border radius normale |
-| `--rL` | `28px` | Border radius grande |
-| `--ease` | `.42s cubic-bezier(...)` | Easing standard |
-| `--spring` | `.55s cubic-bezier(...)` | Easing con effetto molla |
-| `--fd` | `'Bebas Neue'` | Font display (titoli grandi) |
-| `--fb` | `'Outfit'` | Font body (testo normale) |
-| `--nav` | `88px` | Altezza della navbar |
+| Variabile       | Valore default           | Descrizione                             |
+| --------------- | ------------------------ | --------------------------------------- |
+| `--pink`        | `#f4b8b8`                | Rosa chiaro (sfondo blob)               |
+| `--pink-mid`    | `#e89898`                | Rosa medio (accenti, "TOOK")            |
+| `--brown-dark`  | `#3d1f10`                | Bruno scuro (testo principale, bottoni) |
+| `--brown`       | `#5c3122`                | Bruno medio (hover)                     |
+| `--brown-light` | `#9a6b5a`                | Bruno chiaro (testo secondario)         |
+| `--cream`       | `#faf6f3`                | Crema (sfondo body)                     |
+| `--text`        | `#2d1a12`                | Colore testo principale                 |
+| `--text-muted`  | `#7a5a4e`                | Colore testo secondario                 |
+| `--r`           | `20px`                   | Border radius normale                   |
+| `--rL`          | `28px`                   | Border radius grande                    |
+| `--ease`        | `.42s cubic-bezier(...)` | Easing standard                         |
+| `--spring`      | `.55s cubic-bezier(...)` | Easing con effetto molla                |
+| `--fd`          | `'Bebas Neue'`           | Font display (titoli grandi)            |
+| `--fb`          | `'Outfit'`               | Font body (testo normale)               |
+| `--nav`         | `88px`                   | Altezza della navbar                    |
 
 Contiene anche il reset CSS globale e `main { padding-top: var(--nav) }` per non far finire il contenuto sotto la navbar fissa.
 
 ---
 
 ### `css/animations.css`
+
 Contiene tutti i **`@keyframes`** del sito. Nessuna classe, solo animazioni riutilizzate dagli altri CSS.
 
-| Keyframe | Usato da | Effetto |
-|---|---|---|
-| `bf` | `.blob` | Movimento lento dei blob di sfondo |
-| `vIn` | — | Non più usato (era per la SPA) |
-| `fsi` | `.htag`, `.htitle`, `.hsub` ecc. | Fade+slide-in degli elementi hero |
-| `slm` | `.sline::after` | Linea scorrevole animata |
-| `floatCard` | `.ccard` | Fluttuazione lenta delle bento card |
-| `lbin` | `#lb.open` | Fade-in del lightbox |
-| `slideUp` | `#cookie-banner` | Slide-up del banner cookie |
-| `twBlink` | `.tw-cursor` | Lampeggio del cursore typewriter |
-| `charSlideUp` | `.char-anim .ca-inner` | Slide-up singolo carattere |
-| `wordSlideUp` | `.ph-word .pw-inner` | Slide-up singola parola nei titoli |
+| Keyframe      | Usato da                         | Effetto                             |
+| ------------- | -------------------------------- | ----------------------------------- |
+| `bf`          | `.blob`                          | Movimento lento dei blob di sfondo  |
+| `vIn`         | —                                | Non più usato (era per la SPA)      |
+| `fsi`         | `.htag`, `.htitle`, `.hsub` ecc. | Fade+slide-in degli elementi hero   |
+| `slm`         | `.sline::after`                  | Linea scorrevole animata            |
+| `floatCard`   | `.ccard`                         | Fluttuazione lenta delle bento card |
+| `lbin`        | `#lb.open`                       | Fade-in del lightbox                |
+| `slideUp`     | `#cookie-banner`                 | Slide-up del banner cookie          |
+| `twBlink`     | `.tw-cursor`                     | Lampeggio del cursore typewriter    |
+| `charSlideUp` | `.char-anim .ca-inner`           | Slide-up singolo carattere          |
+| `wordSlideUp` | `.ph-word .pw-inner`             | Slide-up singola parola nei titoli  |
 
 ---
 
 ### `css/nav.css`
+
 Stili della navbar floating pill e del menu mobile.
 
 **Classi principali:**
+
 - `.nav-wrapper` — contenitore fixed posizionato in alto
 - `nav` — la pill stessa, con glassmorphism
 - `nav.dark` / `nav.gold` / `nav.purple` — varianti tema
@@ -519,9 +583,11 @@ Stili della navbar floating pill e del menu mobile.
 ---
 
 ### `css/home.css`
+
 Stili **esclusivi di `index.html`**. Non serve sulle altre pagine.
 
 **Classi principali:**
+
 - `.hero` — sezione hero a tutta altezza
 - `.htitle` — il titolone "NEV TOOK THAT."
 - `.htag`, `.hsub`, `.hloc`, `.hcta`, `.hscroll` — elementi dell'hero
@@ -533,9 +599,11 @@ Stili **esclusivi di `index.html`**. Non serve sulle altre pagine.
 ---
 
 ### `css/gallery.css`
+
 Stili condivisi tra tutte le pagine con gallerie (cars, places, portraits, sottopagine).
 
 **Classi principali:**
+
 - `.ph` — page header (area col titolone di sezione)
 - `.ph-inner-glass` — il box frosted glass che contiene il titolo
 - `.ph-tag`, `.ph-title`, `.ph-desc` — elementi del page header
@@ -560,9 +628,11 @@ Stili condivisi tra tutte le pagine con gallerie (cars, places, portraits, sotto
 ---
 
 ### `css/masterpieces.css`
+
 Stili per `masterpieces.html` e `masterpieces/porsche911.html`.
 
 **Selettori principali:**
+
 - `body.pg-masterpieces` — sfondo `#080500`, colore testo dorato
 - `body.pg-masterpieces::before` — gradient radiale sottile (effetto atmosfera)
 - `body.pg-masterpieces::after` — texture grain overlay (SVG inline)
@@ -579,14 +649,15 @@ Stili per `masterpieces.html` e `masterpieces/porsche911.html`.
 ---
 
 ### `css/subpages.css`
+
 Stili specifici per le sottopagine tematiche. Usa selettori `body.pg-xxx` per applicare gli stili solo sulla pagina corrispondente.
 
-| Selector | Pagina | Tema |
-|---|---|---|
-| `body.pg-beatrice` | `masterpieces/beatrice.html` | Sfondo crema/oro |
-| `body.pg-porsche911` | `masterpieces/porsche911.html` | Sfondo `#060606` nero |
-| `body.pg-bikerfest` | `portraits/bikerfest.html` | Sfondo `#08080a` nero |
-| `body.pg-eleonora` | `portraits/eleonora.html` | Sfondo blu notte viola |
+| Selector             | Pagina                         | Tema                   |
+| -------------------- | ------------------------------ | ---------------------- |
+| `body.pg-beatrice`   | `masterpieces/beatrice.html`   | Sfondo crema/oro       |
+| `body.pg-porsche911` | `masterpieces/porsche911.html` | Sfondo `#060606` nero  |
+| `body.pg-bikerfest`  | `portraits/bikerfest.html`     | Sfondo `#08080a` nero  |
+| `body.pg-eleonora`   | `portraits/eleonora.html`      | Sfondo blu notte viola |
 
 **Classi per Beatrice:** `.bea-hero`, `.bea-txt`, `.bea-tag`, `.bea-title`, `.bea-quote`, `.bea-ig`, `.bea-num`, `.bea-img`, `.bea-grain`, `.bea-gallery-hd`
 
@@ -599,9 +670,11 @@ Stili specifici per le sottopagine tematiche. Usa selettori `body.pg-xxx` per ap
 ---
 
 ### `css/pages.css`
+
 Stili per about, contact, footer.
 
 **Classi principali:**
+
 - `.about-grid` — grid 2 colonne (bio + masonry)
 - `.about-name` — il titolone "I'M NEV."
 - `.about-bio` — il testo bio
@@ -619,9 +692,11 @@ Stili per about, contact, footer.
 ---
 
 ### `css/ui.css`
+
 Tutti i componenti UI floating condivisi tra le pagine.
 
 **Componenti:**
+
 - `.blobs`, `.blob`, `.b1/.b2/.b3` — i blob animati in background (fixed, pointer-events none)
 - `.glass` — classe utility per glassmorphism (backdrop-filter)
 - `.reveal` / `.reveal.vis` — sistema di rivelazione on-scroll (opacity + translateY)
@@ -641,15 +716,18 @@ Tutti i componenti UI floating condivisi tra le pagine.
 ## 6. Dove salvare i dati e le foto
 
 ### Regola d'oro
+
 **I dati delle foto vanno in `js/data.js`** (per cars, places, portraits).
 **Le foto vanno in `assets/`** nelle sottocartelle appropriate.
 
 ### Per Cars
+
 1. Crea la cartella `assets/macchine/nome_modello/`
 2. Metti le foto dentro: `foto1.jpg`, `foto2.jpg`, ecc.
 3. Apri `js/data.js` e aggiungi un oggetto all'array `CARS`
 
 ### Per Places (nuovo luogo)
+
 1. Crea la cartella `assets/luoghi/nome_luogo/`
 2. Metti le foto dentro
 3. Aggiungi un oggetto a `PLACES` in `js/data.js`
@@ -660,12 +738,13 @@ Tutti i componenti UI floating condivisi tra le pagine.
    ```
 
 ### Per Portraits (nuova sessione)
+
 1. Crea la cartella `assets/persone/Nome/`
 2. Metti le foto dentro
 3. Aggiungi un oggetto a `PEOPLE_DATA` in `js/data.js`
 4. Aggiorna `PORTRAIT_URLS` in `js/people.js` con il nome del file HTML:
    ```js
-   nuovoid: 'portraits/nomenuovo.html'
+   nuovoid: "portraits/nomenuovo.html";
    ```
 5. Crea il file `portraits/nomenuovo.html` (copia da bikerfest o eleonora)
 6. Aggiorna `parentMap` in `js/nav.js`:
@@ -674,13 +753,16 @@ Tutti i componenti UI floating condivisi tra le pagine.
    ```
 
 ### Per le foto personali (about.html)
+
 Metti le foto in `assets/mie/`. Il file si chiama `foto1.heic`, `foto2.heic` ecc.
 Per aggiungerne o cambiarne il numero, modifica lo script inline in `about.html`:
+
 ```js
-var photos = [1,2,3,4,5,6].map(function(n) {
-  return 'assets/mie/foto' + n + '.heic';
+var photos = [1, 2, 3, 4, 5, 6].map(function (n) {
+  return "assets/mie/foto" + n + ".heic";
 });
 ```
+
 Cambia `6` con il numero di foto che hai.
 
 ---
@@ -688,10 +770,12 @@ Cambia `6` con il numero di foto che hai.
 ## 7. Come aggiungere contenuti
 
 ### Aggiungere una foto a un'auto esistente
+
 1. Metti il file in `assets/macchine/nome_modello/fotoN.jpg`
 2. In `js/data.js`, nell'oggetto di quell'auto, aggiungi `'fotoN.jpg'` all'array `photos`
 
 ### Aggiungere una nuova auto
+
 ```js
 // In js/data.js, dentro CARS:
 { id:'bmw_m3',  label:'BMW M3 E46', sub:'2001 — Classic Sport',
@@ -699,9 +783,11 @@ Cambia `6` con il numero di foto che hai.
   folder:'assets/macchine/bmw_m3_e46',
   photos:['foto1.jpg','foto2.jpg','foto3.jpg'] }
 ```
+
 Crea la cartella `assets/macchine/bmw_m3_e46/` e metti le foto.
 
 ### Aggiungere un nuovo luogo
+
 1. Crea `assets/luoghi/firenze/` con le foto
 2. In `data.js`, aggiungi a `PLACES`:
    ```js
@@ -716,6 +802,7 @@ Crea la cartella `assets/macchine/bmw_m3_e46/` e metti le foto.
    ```
 
 ### Aggiungere una nuova sessione ritratto
+
 1. Crea `assets/persone/Marco/` con le foto
 2. In `data.js`, aggiungi a `PEOPLE_DATA`:
    ```js
@@ -726,7 +813,7 @@ Crea la cartella `assets/macchine/bmw_m3_e46/` e metti le foto.
    ```
 3. In `people.js`, aggiungi a `PORTRAIT_URLS`:
    ```js
-   marco: 'portraits/marco.html'
+   marco: "portraits/marco.html";
    ```
 4. Crea `portraits/marco.html` (copia `portraits/eleonora.html`, cambia contenuti)
 5. In `nav.js`, nel `parentMap`:
@@ -735,15 +822,20 @@ Crea la cartella `assets/macchine/bmw_m3_e46/` e metti le foto.
    ```
 
 ### Cambiare le statistiche in about.html
+
 Cerca in `about.html` la sezione `.about-stats` e modifica i valori `.stat-n` e `.stat-l`:
+
 ```html
 <div class="stat">
-  <div class="stat-n">8+</div>       ← il numero grande
-  <div class="stat-l">Years Shooting</div>  ← l'etichetta sotto
+  <div class="stat-n">8+</div>
+  ← il numero grande
+  <div class="stat-l">Years Shooting</div>
+  ← l'etichetta sotto
 </div>
 ```
 
 ### Cambiare i contatori nella bento grid (home)
+
 In `index.html`, dentro ogni `.ccard`, trovi `.ccard-lbl` con testo tipo `"61 Photos · 7 Models"`. È testo statico — aggiornalo manualmente quando aggiungi foto.
 
 ---
@@ -752,16 +844,18 @@ In `index.html`, dentro ogni `.ccard`, trovi `.ccard-lbl` con testo tipo `"61 Ph
 
 Il sito usa **solo `localStorage`**, niente `sessionStorage` o cookie reali.
 
-| Chiave | Valore | Quando viene salvata | Quando viene letta |
-|---|---|---|---|
-| `cookieAccepted` | `'1'` | Quando l'utente clicca "Got it" sul banner | All'avvio di ogni pagina (in `nav.js`) |
+| Chiave           | Valore | Quando viene salvata                       | Quando viene letta                     |
+| ---------------- | ------ | ------------------------------------------ | -------------------------------------- |
+| `cookieAccepted` | `'1'`  | Quando l'utente clicca "Got it" sul banner | All'avvio di ogni pagina (in `nav.js`) |
 
 **Non c'è nient'altro.** Il sito non salva preferenze di tema, scroll position, filtri selezionati, o altro.
 
 **Per resettare il cookie** (far riapparire il banner): apri la console del browser (`F12`) e digita:
+
 ```js
-localStorage.removeItem('cookieAccepted')
+localStorage.removeItem("cookieAccepted");
 ```
+
 Poi ricarica la pagina.
 
 **Il localStorage è per dominio** (`nevwithahoodie.github.io`). Accettare su una pagina vale per tutto il sito.
@@ -772,19 +866,19 @@ Poi ricarica la pagina.
 
 Ogni pagina ha un tema visivo che cambia sfondo, colore navbar e colore footer. Il tema è controllato dalle classi sul `<body>`.
 
-| Pagina | Classi `<body>` | Navbar | Footer |
-|---|---|---|---|
-| `index.html` | *(nessuna)* | Chiara | Standard |
-| `cars.html` | *(nessuna)* | Chiara | Standard |
-| `places.html` | *(nessuna)* | Chiara | Standard |
-| `portraits.html` | *(nessuna)* | Chiara | Standard |
-| `about.html` | *(nessuna)* | Chiara | Standard |
-| `masterpieces.html` | `theme-dark pg-masterpieces` | Dark | Dark |
-| `masterpieces/beatrice.html` | `theme-gold pg-beatrice` | Gold | Gold |
-| `masterpieces/porsche911.html` | `theme-dark pg-porsche911` | Dark | Dark |
-| `portraits/bikerfest.html` | `theme-dark pg-bikerfest` | Dark | Dark |
-| `portraits/eleonora.html` | `theme-purple pg-eleonora` | Dark viola | Purple |
-| `places/*.html` | *(nessuna)* | Chiara | Dark |
+| Pagina                         | Classi `<body>`              | Navbar     | Footer   |
+| ------------------------------ | ---------------------------- | ---------- | -------- |
+| `index.html`                   | _(nessuna)_                  | Chiara     | Standard |
+| `cars.html`                    | _(nessuna)_                  | Chiara     | Standard |
+| `places.html`                  | _(nessuna)_                  | Chiara     | Standard |
+| `portraits.html`               | _(nessuna)_                  | Chiara     | Standard |
+| `about.html`                   | _(nessuna)_                  | Chiara     | Standard |
+| `masterpieces.html`            | `theme-dark pg-masterpieces` | Dark       | Dark     |
+| `masterpieces/beatrice.html`   | `theme-gold pg-beatrice`     | Gold       | Gold     |
+| `masterpieces/porsche911.html` | `theme-dark pg-porsche911`   | Dark       | Dark     |
+| `portraits/bikerfest.html`     | `theme-dark pg-bikerfest`    | Dark       | Dark     |
+| `portraits/eleonora.html`      | `theme-purple pg-eleonora`   | Dark viola | Purple   |
+| `places/*.html`                | _(nessuna)_                  | Chiara     | Dark     |
 
 **Come funziona:** `css/subpages.css` usa `body.pg-xxx` per applicare sfondo e colori specifici. `js/nav.js` legge `theme-dark/gold/purple` dal body e applica la classe corrispondente alla `<nav>` e al `#mobile-menu`.
 
@@ -795,6 +889,7 @@ Ogni pagina ha un tema visivo che cambia sfondo, colore navbar e colore footer. 
 L'ordine degli script in ogni pagina è deliberato e importante.
 
 ### `index.html`
+
 ```
 1. nav.js        → inizializzazione immediata (attivo nav, cookie check)
 2. animations.js → definisce runTypewriter()
@@ -802,6 +897,7 @@ L'ordine degli script in ogni pagina è deliberato e importante.
 ```
 
 ### `cars.html`
+
 ```
 1. data.js       → definisce CARS[]
 2. lightbox.js   → definisce lbOpen/Close/Nav
@@ -812,6 +908,7 @@ L'ordine degli script in ogni pagina è deliberato e importante.
 ```
 
 ### `places.html`
+
 ```
 1. data.js
 2. places.js     → definisce initPlaces()
@@ -820,6 +917,7 @@ L'ordine degli script in ogni pagina è deliberato e importante.
 ```
 
 ### `portraits.html`
+
 ```
 1. data.js
 2. people.js     → definisce initPeople()
@@ -828,13 +926,15 @@ L'ordine degli script in ogni pagina è deliberato e importante.
 ```
 
 ### `masterpieces.html`
+
 ```
 1. animations.js → definisce startPetals()
 2. nav.js
 3. [inline]      → DOMContentLoaded: chiama startPetals()
 ```
 
-### Sottopagine (places/*, portraits/*, masterpieces/beatrice)
+### Sottopagine (places/_, portraits/_, masterpieces/beatrice)
+
 ```
 1. lightbox.js
 2. masonry.js
@@ -843,6 +943,7 @@ L'ordine degli script in ogni pagina è deliberato e importante.
 ```
 
 ### `masterpieces/porsche911.html`
+
 ```
 1. lightbox.js
 2. nav.js
@@ -897,4 +998,4 @@ L'ordine degli script in ogni pagina è deliberato e importante.
 
 ---
 
-*Documento generato automaticamente — ultima versione: portfolio_v2*
+_Documento generato automaticamente — ultima versione: portfolio_v2_
