@@ -24,7 +24,14 @@ const CARS = [
     photos: _seq('ford-escort-rs-', 5) },
   { id:'celica',   label:'Toyota Celica',       sub:'The Mural Session',   accent:'#a62808', dot:'#d43010',
     folder:'gallery/content/cars/toyota/celica',             cover:'toyota-celica-01.webp',
-    photos: _seq('toyota-celica-', 10) }
+    photos: _seq('toyota-celica-', 10) },
+  { id:'pdet',     label:'Porsche Details',     sub:'Interior Study',       accent:'#4a1414', dot:'#7a1818',
+    folder:'gallery/content/cars/porsche/details',           cover:'porsche-details-01.webp',
+    photos: _seq('porsche-details-', 3) },
+  { id:'p911',     label:"Porsche 911 '70",     sub:'★ Masterpiece',        accent:'#1a1400', dot:'#c9a227',
+    folder:'gallery/content/cars/porsche/911-70',            cover:'porsche-911-1970-01.webp',
+    photos: _seq('porsche-911-1970-', 8),
+    masterpiece: true }
 ];
 
 const PLACES = [

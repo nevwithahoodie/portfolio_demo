@@ -8,12 +8,12 @@
 
   // Sub-pages belong to a parent section
   const parentMap = {
-    cansiglio:  'places',       molveno:   'places',
-    verona:     'places',       india:     'places',
+    cansiglio:  'places',       molveno:    'places',
+    verona:     'places',       india:      'places',
     miramare:   'places',
-    bikerfest:  'portraits',    eleonora:  'portraits',
+    bikerfest:  'portraits',    eleonora:   'portraits',
     aurora:     'portraits',
-    beatrice:   'masterpieces'
+    beatrice:   'masterpieces', porsche911: 'masterpieces'
   };
   const active = parentMap[page] || page;
 
