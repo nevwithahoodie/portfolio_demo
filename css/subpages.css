@@ -34,7 +34,23 @@ body.pg-porsche911 .back:hover { color: #bbb; }
 .p911-head  { padding: 72px 52px 36px; }
 .p911-tag   { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
 .p911-title { font-family: var(--fd); font-size: clamp(52px,10vw,120px); line-height: .88; color: #e0e0e0; }
-.p911-ghost { font-family: var(--fd); font-size: clamp(100px,22vw,280px); line-height: .8; color: rgba(255,255,255,.03); pointer-events: none; user-select: none; margin-top: -20px; }
+.p911-ghost {
+  font-family: var(--fd);
+  font-size: clamp(100px,22vw,280px);
+  line-height: .8;
+  /* Readable as a watermark: white with low opacity on #060606 bg */
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,.18);
+  text-stroke: 1px rgba(255,255,255,.18);
+  /* Fallback for browsers that don't support text-stroke */
+  text-shadow:
+    0 0 0 rgba(255,255,255,0),
+    1px 1px 0 rgba(255,255,255,.04);
+  pointer-events: none;
+  user-select: none;
+  margin-top: -20px;
+  letter-spacing: -4px;
+}
 .p911-desc  { font-size: clamp(16px,1.6vw,20px); color: #666; margin-top: 18px; max-width: 480px; line-height: 1.85; }
 .p911-badge { margin-top: 28px; display: inline-block; background: #1a1a1a; border: 1px solid #333; color: #888; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 8px 18px; border-radius: 4px; }
 .p911-cols  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; padding: 0 44px 80px; overflow: hidden; }

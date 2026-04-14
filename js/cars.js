@@ -1,7 +1,8 @@
 /* ══════════════════════════════════
-   CARS
+   CARS — with 3-column parallax
 ══════════════════════════════════ */
 let _carFilter = 'all';
+let _carsParallaxBound = false;
 
 function initCars() {
   const loader  = document.getElementById('cars-loader');
@@ -23,7 +24,7 @@ function initCars() {
   fb.appendChild(allPill);
 
   CARS.forEach(c => {
-    const p = document.createElement('button');
+    const p     = document.createElement('button');
     const isAct = _carFilter === c.id;
     p.className = 'fpill' + (isAct ? ' act' : '');
     if (isAct) p.style.background = c.accent;
@@ -33,48 +34,88 @@ function initCars() {
     fb.appendChild(p);
   });
 
-  /* ── Masonry (eager loading + progress bar) ── */
-  const m = document.getElementById('cars-masonry');
-  m.innerHTML = '';
-  const show = _carFilter === 'all' ? CARS : CARS.filter(c => c.id === _carFilter);
+  /* ── 3-column parallax grid ── */
+  const wrap = document.getElementById('cars-masonry');
+  wrap.innerHTML = '';
 
+  /* Build 3 column divs */
+  const colL = document.createElement('div');
+  const colC = document.createElement('div');
+  const colR = document.createElement('div');
+  colL.className = 'cars-col'; colL.id = 'cars-col-l';
+  colC.className = 'cars-col'; colC.id = 'cars-col-c';
+  colR.className = 'cars-col'; colR.id = 'cars-col-r';
+  wrap.appendChild(colL);
+  wrap.appendChild(colC);
+  wrap.appendChild(colR);
+
+  const cols = [colL, colC, colR];
+  const show  = _carFilter === 'all' ? CARS : CARS.filter(c => c.id === _carFilter);
+
+  let globalIdx = 0;
   show.forEach(c => {
     const urls = c.photos.map(f => c.folder + '/' + f);
     c.photos.forEach((f, i) => {
       const src = c.folder + '/' + f;
       const d   = document.createElement('div');
       d.className = 'mi';
-      /* Cars usa eager loading per il progress bar */
+
       const img = document.createElement('img');
-      img.src     = src;
-      img.alt     = 'Nev \u2014 ' + c.label + ', ' + c.sub + ', photo ' + (i + 1);
-      img.loading = 'eager';
+      img.src      = src;
+      img.alt      = 'Nev \u2014 ' + c.label + ', ' + c.sub + ', photo ' + (i + 1);
+      img.loading  = 'eager';
       img.decoding = 'async';
-      img.width   = 800;
-      img.height  = 533;
-      const ov = document.createElement('div');
+      img.width    = 800;
+      img.height   = 533;
+
+      const ov    = document.createElement('div');
       ov.className = 'mi-ov';
       const badge = document.createElement('span');
-      badge.className = 'mi-badge';
+      badge.className   = 'mi-badge';
       badge.textContent = c.label;
       ov.appendChild(badge);
+
       d.appendChild(img);
       d.appendChild(ov);
       d.addEventListener('click', () => lbOpen(urls, i, c.label));
-      m.appendChild(d);
+
+      cols[globalIdx % 3].appendChild(d);
+      globalIdx++;
     });
   });
 
-  /* ── Progress tracker ── */
+  /* ── Parallax scroll handler ── */
+  if (!_carsParallaxBound) {
+    _carsParallaxBound = true;
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const l = document.getElementById('cars-col-l');
+        const c = document.getElementById('cars-col-c');
+        const r = document.getElementById('cars-col-r');
+        if (l && c && r) {
+          const sy = window.scrollY;
+          l.style.transform = 'translateY(-' + (sy * 0.055) + 'px)';
+          r.style.transform = 'translateY(-' + (sy * 0.055) + 'px)';
+          c.style.transform = 'translateY('  + (sy * 0.032) + 'px)';
+        }
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  /* ── Progress tracker → hide loader ── */
   requestAnimationFrame(() => {
-    const imgs  = [...m.querySelectorAll('img')];
+    const imgs  = [...wrap.querySelectorAll('img')];
     const total = imgs.length;
     if (!total) { loader.classList.add('hidden'); return; }
     let loaded = 0;
 
     function onLoad() {
       loaded++;
-      bar.style.width = Math.round(loaded / total * 100) + '%';
+      bar.style.width     = Math.round(loaded / total * 100) + '%';
       countEl.textContent = loaded + ' / ' + total;
       if (loaded >= total) {
         setTimeout(() => {
@@ -95,5 +136,10 @@ function initCars() {
 
 function filterCars(id) {
   _carFilter = id;
+  /* Reset parallax transforms on filter change */
+  ['cars-col-l','cars-col-c','cars-col-r'].forEach(cid => {
+    const el = document.getElementById(cid);
+    if (el) el.style.transform = '';
+  });
   initCars();
 }

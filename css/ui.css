@@ -121,3 +121,55 @@ body.theme-purple #git-float .git-label { color: rgba(232,224,240,.45); }
 body.theme-purple #git-float .git-name  { color: rgba(232,224,240,.85); }
 body.theme-gold   #git-float { background: rgba(253,245,232,.75); border-color: rgba(201,162,39,.32); }
 @media (max-width: 500px) { #git-float { bottom: 74px; right: 14px; padding: 7px 13px 7px 8px; } .git-label { display: none; } }
+
+/* ══════════════════════════════════
+   CUSTOM SCROLLBAR — themed per page
+   Webkit (Chrome, Safari, Edge)
+══════════════════════════════════ */
+
+/* ── Default (cream pages) ── */
+::-webkit-scrollbar              { width: 6px; }
+::-webkit-scrollbar-track        { background: transparent; }
+::-webkit-scrollbar-thumb        {
+  background: rgba(92,49,34,.22);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover  { background: rgba(92,49,34,.42); }
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: rgba(92,49,34,.22) transparent; }
+
+/* ── Dark pages (Bikerfest, Porsche, Masterpieces) ── */
+body.theme-dark ::-webkit-scrollbar-thumb,
+body.pg-bikerfest ::-webkit-scrollbar-thumb,
+body.pg-porsche911 ::-webkit-scrollbar-thumb,
+body.pg-masterpieces ::-webkit-scrollbar-thumb {
+  background: rgba(201,162,39,.30);
+}
+body.theme-dark ::-webkit-scrollbar-thumb:hover,
+body.pg-bikerfest ::-webkit-scrollbar-thumb:hover,
+body.pg-porsche911 ::-webkit-scrollbar-thumb:hover,
+body.pg-masterpieces ::-webkit-scrollbar-thumb:hover {
+  background: rgba(201,162,39,.58);
+}
+body.theme-dark,
+body.pg-bikerfest,
+body.pg-porsche911,
+body.pg-masterpieces {
+  scrollbar-color: rgba(201,162,39,.30) transparent;
+}
+
+/* ── Gold / Beatrice ── */
+body.pg-beatrice ::-webkit-scrollbar-thumb        { background: rgba(201,162,39,.28); }
+body.pg-beatrice ::-webkit-scrollbar-thumb:hover  { background: rgba(201,162,39,.52); }
+body.pg-beatrice { scrollbar-color: rgba(201,162,39,.28) transparent; }
+
+/* ── Purple / Eleonora ── */
+body.pg-eleonora ::-webkit-scrollbar-thumb        { background: rgba(144,96,192,.32); }
+body.pg-eleonora ::-webkit-scrollbar-thumb:hover  { background: rgba(144,96,192,.55); }
+body.pg-eleonora { scrollbar-color: rgba(144,96,192,.32) transparent; }
+
+/* ── Aurora ── */
+body.pg-aurora ::-webkit-scrollbar-thumb          { background: rgba(80,97,95,.30); }
+body.pg-aurora ::-webkit-scrollbar-thumb:hover    { background: rgba(80,97,95,.55); }
+body.pg-aurora { scrollbar-color: rgba(80,97,95,.30) transparent; }

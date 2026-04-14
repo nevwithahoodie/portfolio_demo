@@ -103,3 +103,38 @@
   .masonry { columns: 1; }
   .pgrid { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════
+   CARS — 3-column parallax grid
+   (replaces CSS columns for cars page)
+══════════════════════════════════ */
+#cars-masonry {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 11px;
+  overflow: hidden;   /* clips columns during parallax */
+}
+.cars-col {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  will-change: transform;
+}
+/* Middle col starts slightly lower for visual rhythm */
+.cars-col:nth-child(2) { padding-top: 28px; }
+
+@media (max-width: 900px) {
+  #cars-masonry { grid-template-columns: 1fr 1fr; }
+  .cars-col:last-child { display: none; }
+}
+@media (max-width: 540px) {
+  #cars-masonry {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+  .cars-col { display: none; }
+  .cars-col:first-child { display: flex; }
+}
+
+/* Aggiustamento padding per il wrapper parallax cars */
+.cars-mwrap { padding-bottom: 80px; }
