@@ -1,217 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nev took that — nevwithahoodie</title>
-  <meta name="description" content="Cars, places & people — photography by Nev, based in Pordenone.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap"
-    rel="stylesheet">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="nev took that">
-  <meta property="og:description" content="Cars, places & people — photography by Nev, based in Pordenone.">
-  <meta property="og:image"
-    content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/assets/preview.webp">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="nev took that">
-  <meta name="twitter:image"
-    content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/assets/preview.webp">
-  <link rel="icon" type="image/webp" href="gallery/system/assets/logo.webp">
-  <link rel="apple-touch-icon" href="gallery/system/assets/logo.webp">
-  <link rel="stylesheet" href="css/vars.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/gallery.css">
-  <link rel="stylesheet" href="css/masterpieces.css">
-  <link rel="stylesheet" href="css/subpages.css">
-  <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/ui.css">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4CC6DT5ST"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-Y4CC6DT5ST');
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nev took that — nevwithahoodie</title>
+<meta name="description" content="Cars, places & people — photography by Nev, based in Pordenone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="nev took that">
+<meta property="og:description" content="Cars, places & people — photography by Nev, based in Pordenone.">
+<meta property="og:image" content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/assets/preview.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nev took that">
+<meta name="twitter:image" content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/assets/preview.webp">
+<link rel="icon" type="image/webp" href="gallery/system/assets/logo.webp">
+<link rel="apple-touch-icon" href="gallery/system/assets/logo.webp">
+<link rel="stylesheet" href="css/vars.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/gallery.css">
+<link rel="stylesheet" href="css/masterpieces.css">
+<link rel="stylesheet" href="css/subpages.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/ui.css">
+<link rel="stylesheet" href="css/smooth.css">
 </head>
-
 <body>
-  <div class="blobs" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
+<div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="cookie-txt"><strong>This site uses cookies</strong><span>No data is sold or shared with third parties.</span></div><button class="cookie-btn" onclick="acceptCookies()">Got it</button></div>
+<a id="git-float" href="about.html" aria-label="About me"><div class="git-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="git-label" translate="no">About me</div><div class="git-name" translate="no">Get in touch</div></div></a>
+<button id="btt-fixed" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Top</button>
+<div id="cookie-toast"><div class="ct-hearts">&#9825;</div><span>thanks for accepting!</span></div>
+<div id="nav-mount"></div>
+<main>
+<section class="hero">
+  <p class="htag">Photography by Nev &mdash; Since 2016</p>
+  <h1 class="htitle" translate="no">NEV<br><span class="ac">TOOK</span><br>THAT.</h1>
+  <p class="hsub">Cars, places &amp; people &mdash; captured through the lens of a 20-year-old obsessed with light, motion, and the perfect frame.</p>
+  <div class="hloc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg> <span translate="no">Pordenone</span>, Italy</div>
+  <div class="hcta">
+    <a class="btn-p" href="cars.html" translate="no">Explore Work</a>
+    <a class="btn-o" href="about.html" translate="no">About Me</a>
   </div>
-  <div id="cookie-banner" role="region" aria-label="Cookie notice">
-    <div class="cookie-icon">&#127850;</div>
-    <div class="cookie-txt"><strong>This site uses cookies</strong><span>No data is sold or shared with third
-        parties.</span></div><button class="cookie-btn" onclick="acceptCookies()">Got it</button>
-  </div>
-  <a id="git-float" href="about.html" aria-label="About me">
-    <div class="git-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2.5">
-        <rect x="2" y="4" width="20" height="16" rx="2" />
-        <path d="m2 7 10 7 10-7" />
-      </svg></div>
-    <div>
-      <div class="git-label" translate="no">About me</div>
-      <div class="git-name" translate="no">Get in touch</div>
+  <div class="hscroll"><div class="sline"></div><span>Scroll</span></div>
+</section>
+
+<section class="hcards" aria-label="Portfolio categories">
+  <a class="ccard reveal" href="cars.html" style="transition-delay:.05s">
+    <img src="gallery/content/cars/mazda/mx5/2025/mazda-mx5-2025-01.webp"
+         alt="Automotive photography by Nev" loading="lazy" width="800" height="533">
+    <div class="ccard-ov"></div>
+    <div class="ccard-c">
+      <div class="ccard-lbl">53 Photos &middot; 7 Models</div>
+      <div class="ccard-title" translate="no">CARS</div>
     </div>
+    <div class="ccard-badge" translate="no">Automotive</div>
   </a>
-  <button id="btt-fixed" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg width="13"
-      height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <path d="M12 19V5M5 12l7-7 7 7" />
-    </svg> Top</button>
-  <div id="cookie-toast">
-    <div class="ct-hearts">&#9825;</div><span>thanks for accepting!</span>
+  <a class="ccard reveal" href="places.html" style="transition-delay:.12s">
+    <img src="gallery/content/places/molveno/lake-molveno-01.webp"
+         alt="Landscape photography by Nev" loading="lazy" width="800" height="533">
+    <div class="ccard-ov"></div>
+    <div class="ccard-c">
+      <div class="ccard-lbl">30 Photos &middot; 5 Spots</div>
+      <div class="ccard-title" translate="no">PLACES</div>
+    </div>
+    <div class="ccard-badge" translate="no">Travels</div>
+  </a>
+  <a class="ccard reveal" href="portraits.html" style="transition-delay:.2s">
+    <img src="gallery/content/people/beatrice/beatrice-02.webp"
+         alt="Portrait photography by Nev" loading="lazy" width="800" height="533">
+    <div class="ccard-ov"></div>
+    <div class="ccard-c">
+      <div class="ccard-lbl">30 Photos &middot; 4 Sessions</div>
+      <div class="ccard-title" translate="no">PORT<span style="color:var(--pink-mid)">RAITS</span></div>
+    </div>
+    <div class="ccard-badge" translate="no">People</div>
+  </a>
+  <a class="ccard reveal" href="masterpieces.html" style="transition-delay:.28s">
+    <img src="gallery/content/cars/porsche/911-70/porsche-911-1970-01.webp"
+         alt="Masterpiece series by Nev" loading="lazy" width="800" height="533">
+    <div class="ccard-ov" style="background:linear-gradient(to top,rgba(10,6,0,.85) 0%,rgba(201,162,39,.06) 50%,transparent 100%)"></div>
+    <div class="ccard-c">
+      <div class="ccard-lbl" style="color:rgba(201,162,39,.8)">2 Series &middot; 16 Photos</div>
+      <div class="ccard-title" translate="no" style="background:linear-gradient(135deg,#c9a227,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">MASTER<br>PIECES</div>
+    </div>
+    <div class="ccard-badge" style="background:linear-gradient(135deg,rgba(201,162,39,.4),rgba(240,192,64,.3));border-color:rgba(201,162,39,.5);color:#f0d070" translate="no">&#9733; Best of</div>
+  </a>
+  <a class="ccard reveal" href="about.html" style="transition-delay:.36s">
+    <img src="gallery/system/misc/my-stuff-01.webp"
+         alt="Navpreet Singh, photographer" loading="lazy" width="800" height="533">
+    <div class="ccard-ov"></div>
+    <div class="ccard-c">
+      <div class="ccard-lbl">Personal &middot; 6 Photos</div>
+      <div class="ccard-title" translate="no">ABOUT</div>
+    </div>
+    <div class="ccard-badge" translate="no">Me</div>
+  </a>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-brand">
+      <div class="ft-logo" translate="no">NEV<span>.</span></div>
+      <p>Photography by Navpreet Singh.<br>Cars, places &amp; people &mdash; since 2016.</p>
+      <div class="ft-social" style="margin-top:14px">
+        <a href="https://www.instagram.com/nev.shotz/" target="_blank" rel="noopener" class="ft-soc-btn ig" title="@nev.shotz"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-links">
+      <div class="ft-links-title" translate="no">Portfolio</div>
+      <a class="ft-link" href="cars.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Cars</a>
+      <a class="ft-link" href="places.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Places</a>
+      <a class="ft-link" href="portraits.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Portraits</a>
+      <a class="ft-link" href="masterpieces.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Masterpieces</a>
+    </div>
+    <div class="ft-links">
+      <div class="ft-links-title">Contact</div>
+      <a class="ft-link" href="mailto:navpreet.singh1209@gmail.com"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> navpreet.singh1209@gmail.com</a>
+      <a class="ft-link" href="https://www.instagram.com/nev.shotz/" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg> @nev.shotz</a>
+    </div>
   </div>
-  <div id="nav-mount"></div>
-  <main>
-    <section class="hero">
-      <p class="htag">Photography by Nev &mdash; Since 2016</p>
-      <h1 class="htitle" translate="no">NEV<br><span class="ac">TOOK</span><br>THAT.</h1>
-      <p class="hsub">Cars, places &amp; people &mdash; captured through the lens of a 20-year-old obsessed with light,
-        motion, and the perfect frame.</p>
-      <div class="hloc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2.5">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-          <circle cx="12" cy="9" r="2.5" />
-        </svg> <span translate="no">Pordenone</span>, Italy</div>
-      <div class="hcta">
-        <a class="btn-p" href="cars.html" translate="no">Explore Work</a>
-        <a class="btn-o" href="about.html" translate="no">About Me</a>
-      </div>
-      <div class="hscroll">
-        <div class="sline"></div><span>Scroll</span>
-      </div>
-    </section>
-
-    <section class="hcards" aria-label="Portfolio categories">
-      <a class="ccard reveal" href="cars.html" style="transition-delay:.05s">
-        <img src="gallery/content/cars/mazda/mx5/2025/mazda-mx5-2025-01.webp" alt="Automotive photography by Nev"
-          loading="lazy" width="800" height="533">
-        <div class="ccard-ov"></div>
-        <div class="ccard-c">
-          <div class="ccard-lbl">53 Photos &middot; 7 Models</div>
-          <div class="ccard-title" translate="no">CARS</div>
-        </div>
-        <div class="ccard-badge" translate="no">Automotive</div>
-      </a>
-      <a class="ccard reveal" href="places.html" style="transition-delay:.12s">
-        <img src="gallery/content/places/molveno/lake-molveno-01.webp" alt="Landscape photography by Nev" loading="lazy"
-          width="800" height="533">
-        <div class="ccard-ov"></div>
-        <div class="ccard-c">
-          <div class="ccard-lbl">30 Photos &middot; 5 Spots</div>
-          <div class="ccard-title" translate="no">PLACES</div>
-        </div>
-        <div class="ccard-badge" translate="no">Travels</div>
-      </a>
-      <a class="ccard reveal" href="portraits.html" style="transition-delay:.2s">
-        <img src="gallery/content/people/beatrice/beatrice-02.webp" alt="Portrait photography by Nev" loading="lazy"
-          width="800" height="533">
-        <div class="ccard-ov"></div>
-        <div class="ccard-c">
-          <div class="ccard-lbl">30 Photos &middot; 4 Sessions</div>
-          <div class="ccard-title" translate="no">PORT<span style="color:var(--pink-mid)">RAITS</span></div>
-        </div>
-        <div class="ccard-badge" translate="no">People</div>
-      </a>
-      <a class="ccard reveal" href="masterpieces.html" style="transition-delay:.28s">
-        <img src="gallery/content/cars/porsche/911-70/porsche-911-1970-01.webp" alt="Masterpiece series by Nev"
-          loading="lazy" width="800" height="533">
-        <div class="ccard-ov"
-          style="background:linear-gradient(to top,rgba(10,6,0,.85) 0%,rgba(201,162,39,.06) 50%,transparent 100%)">
-        </div>
-        <div class="ccard-c">
-          <div class="ccard-lbl" style="color:rgba(201,162,39,.8)">2 Series &middot; 16 Photos</div>
-          <div class="ccard-title" translate="no"
-            style="background:linear-gradient(135deg,#c9a227,#f0d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
-            MASTER<br>PIECES</div>
-        </div>
-        <div class="ccard-badge"
-          style="background:linear-gradient(135deg,rgba(201,162,39,.4),rgba(240,192,64,.3));border-color:rgba(201,162,39,.5);color:#f0d070"
-          translate="no">&#9733; Best of</div>
-      </a>
-      <a class="ccard reveal" href="about.html" style="transition-delay:.36s">
-        <img src="gallery/system/misc/my-stuff-01.webp" alt="Navpreet Singh, photographer" loading="lazy" width="800"
-          height="533">
-        <div class="ccard-ov"></div>
-        <div class="ccard-c">
-          <div class="ccard-lbl">Personal &middot; 6 Photos</div>
-          <div class="ccard-title" translate="no">ABOUT</div>
-        </div>
-        <div class="ccard-badge" translate="no">Me</div>
-      </a>
-    </section>
-
-    <footer>
-      <div class="ft-inner">
-        <div class="ft-brand">
-          <div class="ft-logo" translate="no">NEV<span>.</span></div>
-          <p>Photography by Navpreet Singh.<br>Cars, places &amp; people &mdash; since 2016.</p>
-          <div class="ft-social" style="margin-top:14px">
-            <a href="https://www.instagram.com/nev.shotz/" target="_blank" rel="noopener" class="ft-soc-btn ig"
-              title="@nev.shotz"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
-              </svg></a>
-          </div>
-        </div>
-        <div class="ft-links">
-          <div class="ft-links-title" translate="no">Portfolio</div>
-          <a class="ft-link" href="cars.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg> Cars</a>
-          <a class="ft-link" href="places.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg> Places</a>
-          <a class="ft-link" href="portraits.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg> Portraits</a>
-          <a class="ft-link" href="masterpieces.html" translate="no"><svg width="13" height="13" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg> Masterpieces</a>
-        </div>
-        <div class="ft-links">
-          <div class="ft-links-title">Contact</div>
-          <a class="ft-link" href="mailto:navpreet.singh1209@gmail.com"><svg width="13" height="13" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m2 7 10 7 10-7" />
-            </svg> navpreet.singh1209@gmail.com</a>
-          <a class="ft-link" href="https://www.instagram.com/nev.shotz/" target="_blank" rel="noopener"><svg width="13"
-              height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
-            </svg> @nev.shotz</a>
-        </div>
-      </div>
-      <div class="ft-bottom">
-        <div class="ft-copy">&copy; 2026 <a href="https://nevwithahoodie.github.io/portfolio_demo"
-            target="_blank">nevwithahoodie.github.io/portfolio_demo</a> &mdash; All rights reserved.</div>
-        <div class="ft-copy">Photography by Navpreet Singh</div>
-      </div>
-    </footer>
-  </main>
-  <script src="js/components.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/animations.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", runTypewriter);</script>
+  <div class="ft-bottom">
+    <div class="ft-copy">&copy; 2026 <a href="https://nevwithahoodie.github.io/portfolio_demo" target="_blank">nevwithahoodie.github.io/portfolio_demo</a> &mdash; All rights reserved.</div>
+    <div class="ft-copy">Photography by Navpreet Singh</div>
+  </div>
+</footer>
+</main>
+<script src="js/components.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/animations.js"></script>
+<script>document.addEventListener("DOMContentLoaded", runTypewriter);</script>
 </body>
-
 </html>

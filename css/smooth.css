@@ -1,0 +1,273 @@
+/* ══════════════════════════════════
+   SMOOTH.CSS — UX animations & polish
+   Loaded on every page after ui.css
+══════════════════════════════════ */
+
+/* ── Smooth scrolling (already on html, reinforced) ── */
+html { scroll-behavior: smooth; }
+
+/* ── Better font rendering ── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ══════════════════════════════════
+   REVEAL SYSTEM — staggered IntersectionObserver
+   Classes: .reveal (base), .reveal-up, .reveal-left,
+            .reveal-scale, .reveal-fade
+   Delay via [data-delay="100"] etc.
+══════════════════════════════════ */
+.reveal,
+.reveal-up,
+.reveal-left,
+.reveal-scale,
+.reveal-fade {
+  opacity: 0;
+  transition:
+    opacity .75s cubic-bezier(.22,1,.36,1),
+    transform .75s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
+}
+
+.reveal,
+.reveal-up    { transform: translateY(28px); }
+.reveal-left  { transform: translateX(-28px); }
+.reveal-scale { transform: scale(.94); }
+.reveal-fade  { transform: none; }
+
+.reveal.vis,
+.reveal-up.vis,
+.reveal-left.vis,
+.reveal-scale.vis,
+.reveal-fade.vis {
+  opacity: 1;
+  transform: none;
+}
+
+/* Delay helpers */
+[data-delay="100"] { transition-delay: .10s; }
+[data-delay="150"] { transition-delay: .15s; }
+[data-delay="200"] { transition-delay: .20s; }
+[data-delay="300"] { transition-delay: .30s; }
+[data-delay="400"] { transition-delay: .40s; }
+[data-delay="500"] { transition-delay: .50s; }
+[data-delay="600"] { transition-delay: .60s; }
+
+/* ══════════════════════════════════
+   NAV — micro-interactions
+══════════════════════════════════ */
+.nl {
+  transition:
+    color .22s ease,
+    background .22s ease,
+    box-shadow .22s ease,
+    transform .18s cubic-bezier(.34,1.56,.64,1);
+}
+.nl:active  { transform: scale(.95); }
+
+.logo {
+  transition: opacity .2s ease, color .35s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
+}
+.logo:hover { opacity: .72; transform: scale(1.04); }
+.logo:active { transform: scale(.96); }
+
+/* ══════════════════════════════════
+   CARDS — enhanced hover physics
+══════════════════════════════════ */
+.ccard {
+  transition:
+    transform .55s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .4s ease;
+}
+.ccard:hover {
+  transform: translateY(-14px) scale(1.028) translateZ(0);
+  box-shadow:
+    0 36px 80px rgba(61,31,16,.22),
+    0 12px 24px rgba(61,31,16,.10);
+}
+.ccard:active { transform: translateY(-6px) scale(1.01) translateZ(0); }
+
+.pcard {
+  transition:
+    transform .5s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .4s ease;
+}
+.pcard:hover {
+  transform: translateY(-10px) scale(1.022);
+  box-shadow: 0 28px 68px rgba(0,0,0,.18);
+}
+.pcard:active { transform: translateY(-4px) scale(1.01); }
+
+.mp-card {
+  transition:
+    transform .5s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .4s ease;
+}
+.mp-card:hover {
+  transform: translateY(-16px) scale(1.018);
+  box-shadow:
+    0 44px 110px rgba(0,0,0,.62),
+    0 0 0 1px rgba(201,162,39,.24),
+    0 0 90px rgba(201,162,39,.10);
+}
+
+/* ══════════════════════════════════
+   MASONRY ITEMS — hover refinement
+══════════════════════════════════ */
+.mi {
+  transition:
+    transform .45s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .38s ease;
+}
+.mi:hover { transform: translateY(-5px); }
+.mi:active { transform: translateY(-2px); }
+.mi img { transition: transform .65s cubic-bezier(.22,1,.36,1); }
+.mi:hover img { transform: scale(1.05); }
+
+/* ══════════════════════════════════
+   BUTTONS
+══════════════════════════════════ */
+.btn-p, .btn-o, .cookie-btn, .bea-ig, .ele-ig, .bf-ig, .rora-ig, .nav-about {
+  transition:
+    background .22s ease,
+    color .22s ease,
+    transform .22s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .22s ease;
+}
+.btn-p:active,
+.btn-o:active,
+.cookie-btn:active,
+.nav-about:active { transform: scale(.96) translateY(0) !important; }
+
+/* ══════════════════════════════════
+   BACK BUTTON
+══════════════════════════════════ */
+.back {
+  transition: color .2s ease, gap .2s ease;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.back svg { transition: transform .28s cubic-bezier(.34,1.56,.64,1); }
+.back:hover svg { transform: translateX(-5px); }
+
+/* ══════════════════════════════════
+   CONTACT CARDS
+══════════════════════════════════ */
+.contact-card {
+  transition:
+    background .3s ease,
+    transform .4s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 20px 48px rgba(61,31,16,.14);
+}
+.contact-card:active { transform: translateY(-2px); }
+
+.stat {
+  transition:
+    transform .4s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .3s ease;
+}
+.stat:hover { transform: translateY(-4px); }
+
+/* ══════════════════════════════════
+   GIT FLOAT — smoother entrance
+══════════════════════════════════ */
+#git-float {
+  animation: gitFadeIn .6s 1.8s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes gitFadeIn {
+  from { opacity: 0; transform: translateY(14px) scale(.9); }
+  to   { opacity: .82; transform: translateY(0) scale(1); }
+}
+
+/* ══════════════════════════════════
+   FOOTER links
+══════════════════════════════════ */
+.ft-link {
+  transition: color .2s ease, gap .2s ease;
+  display: flex; align-items: center; gap: 7px;
+}
+.ft-link:hover { gap: 10px; }
+
+.ft-soc-btn {
+  transition:
+    transform .35s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .3s ease;
+}
+.ft-soc-btn:hover { transform: translateY(-4px) scale(1.08); }
+.ft-soc-btn:active { transform: scale(.95); }
+
+/* ══════════════════════════════════
+   LIGHTBOX — smoother open/close
+══════════════════════════════════ */
+#lb { transition: opacity .25s ease; }
+#lb.open { animation: lbIn .28s ease both; }
+@keyframes lbIn {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to   { opacity: 1; backdrop-filter: blur(22px); }
+}
+#lb img {
+  transition: opacity .3s ease, transform .3s cubic-bezier(.22,1,.36,1);
+  animation: lbImgIn .3s ease both;
+}
+@keyframes lbImgIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.lb-nav {
+  transition: background .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
+}
+.lb-nav:hover  { transform: translateY(-50%) scale(1.12); }
+.lb-nav:active { transform: translateY(-50%) scale(.92); }
+
+/* ══════════════════════════════════
+   FILTER PILLS (Cars)
+══════════════════════════════════ */
+.fpill {
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .28s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .25s ease;
+}
+.fpill:hover  { transform: translateY(-3px); }
+.fpill:active { transform: translateY(0) scale(.96); }
+
+/* ══════════════════════════════════
+   IMAGE LOAD FADE-IN
+   Applies as images load/decode
+══════════════════════════════════ */
+img { transition: opacity .4s ease; }
+img[data-src] { opacity: 0; }
+img.loaded    { opacity: 1; }
+
+/* ══════════════════════════════════
+   HERO SCROLL HINT
+══════════════════════════════════ */
+.hscroll {
+  animation: fsi .8s .82s ease both, scrollBounce 2.4s 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* ══════════════════════════════════
+   REDUCED MOTION — respect user pref
+══════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .hscroll { animation: none !important; }
+  #git-float { animation: none !important; opacity: .82; }
+}
