@@ -183,8 +183,10 @@ Cookie banner GDPR reale — ora il banner è puramente estetico: accettare non 
 - metti keywords per far trovare il mio sito online e renderlo piu google lgbtq friendly
 
 
------- portfolio v3.7.2?
-landing page? che potrebbe essere aperta da qr code che io do in giro e mi fa vedere una pagina che permette alla persona di contattarmi e questa pagine mi consiglia anche di andare a guardare la categoria cars. darò in giro questo bigliettino da visita, o li metterò su macchine in giro.
+------ portfolio v3.7.2
+- cerca di aggiungermi le preview in qualche modo a bassa qualità, cosi le foto non ci mettono 5 anni a caricarsi
+- quando faccio hover sopra un tile si zooma ,a appena mi levo torna al suo posto senza animazione, sistema in modo che si dezoomi e non si tolga subito
+- che ne pensi di una landing page? che potrebbe essere aperta da qr code che io do in giro e mi fa vedere una pagina che permette alla persona di contattarmi e questa pagine mi consiglia anche di andare a guardare la categoria cars.  darò in giro questo bigliettino da visita, o li metterò su macchine in giro. o magari semplicemente essere cercata da google.
 
 
 homepage
