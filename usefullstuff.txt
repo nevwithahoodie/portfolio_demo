@@ -1,0 +1,35 @@
+Git:
+> git add .
+> git commit -m "descrizione modifica"
+> git push
+
+> git pull
+
+
+============
+ImageMagick:
+// installa ImageMagick
+> winget install ImageMagick.ImageMagick
+
+// trasforma tutti i jpg in webp, abbasando la qualità del 80%
+Get-ChildItem -Filter *.jpg | ForEach-Object {
+    magick $_.FullName -quality 80 ($_.BaseName + ".webp")
+}
+
+// elimina tutti i jpg
+Remove-Item *.jpg
+
+// rename webp
+$i = 1
+Get-ChildItem -Filter *.webp | Sort-Object Name | ForEach-Object {
+	$i++
+    $newName = "porsche-911-1970-{0:D2}.webp" -f $i
+    Rename-Item $_.FullName $newName
+}
+
+
+=========
+Prettier:
+
+> npm install -g prettier
+> npx prettier . --write

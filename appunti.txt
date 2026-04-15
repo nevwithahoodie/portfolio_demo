@@ -1,0 +1,206 @@
+
+----- index v1
+- in tutte le pagine manca il footer, mettici il mio link instagram https://www.instagram.com/nev.shotz/, copyright e altre cose per riempire.
+- in places non si legge l'etichetta con scritto travels
+- cambierei people con portraits
+- se faccio un hover su una categoria su home, le altre categorie si buggano non sono piu arrottondate ma diventano rettangolari
+- i sottotitoli dei diversi titolti vanno piu grandi
+- va messsa la porsche 911_70 come masterpiece della categoria, la voglio dorata e bella come hai fatto con beatrice in people
+- nella sezione beatrice cambia da beat rice a qualcosa di piu carino, magari lasciando anche solo beatrice
+- mettici anche un messaggino fake per cookies solo per vista
+- aggiungi i link instagram, killing klub: https://www.instagram.com/killingklub/, beatrice:https://www.instagram.com/beaniaka/, eleonora:https://www.instagram.com/_thickbarbie_/
+- sulla nav bar (Home, Cars, Places, People, About) aggiungerei anche masterpieces
+- da mobile la nav bar non si vede bene
+- su porsche 911_70 non si vede il 70 nel titolo
+- in pagine specifiche la nav bar deve combacere il colore, es in porsche 911_70non combacia 
+- in certe pagine le foto sono solo da una parte, esempio in verona solo a dx e anche in eleonora.
+- metti anche le mie info, navpreet.singh1209@gmail.com e un link a whatsapp, questo è quello che mi dice whatsapp, non so se è giusto: https://api.whatsapp.com/send/?phone=3519640070&text&type=phone_number, e metterei qui anche un link mailto, e anche instagram. vedi te, fai una sezione contact messaggino
+- nel footer ce scritto nevtookthat.it sostituisci con nevwithahoodie.github.io/portfolio_demo per copyright ecc.
+
+
+---- index v2
+- anche nella home voglio una cosa a tiles, ma piu grande con tutte le categorie
+- rendi le cose piu liquid glass ancora
+- metti tipo based in Pordenone 
+- rendi le cose animate stile floating tipo
+- metti qualcosa a dx per riempire la pagine, qualche pattern che si muove o altro, e le mie info in caso idk
+- la nav bar dev essere liquid glass con trasparenza, voglio che il sito abbia piu liquid glass, piu vetroso tipo
+
+-----index v3
+- torna alla pagina di prima della porsche 911_70, intendevo solo il pulsante dorato, non tutta la pagina. volevo solo il pulsante dorato in categoria cars. la pagina di 911_70 mi piaceva com'era prima
+
+----- index v4
+- idea home come nella foto presente in questa cartella.
+- di conseguenza voglio la ui piu floating glass windows, ma non tropppo da far vedere solo quello 
+- i sottotitoli (es. An icon from another era. Photographed in pure black and white — because some machines transcend color.) e anche alti, sono tropppi piccoli, voglio testo piu grande
+- nella pagina della porsche 911_70 si legge bene PORSCHE 911 ma non si legge 70.
+- nella pagine about, l'email dev essere navpreet.singh1209@gmail.com
+- nella pagine di biker fest int in posto del blu metti un arrancione acceso/rosso
+
+
+---------- index v5 -  da scartare e rifare
+- da certe parti vedo email protected, togli quella roba, lasciami la mail e chi sene frega
+- sottotitolo nella homepage piu grande
+- togli la parte di contatta con whatsapp, elimina il mio numero da tutte le parti sul sito 
+- togli il fatto che puoi vedere le masterpiece (911_70 e beatrice dalle sezioni normali (cars e portraits), ma quelle sezioni in specifico le puoi raggiungere solamente dalla sezione masterpiece. quindi in brevis. se apro cars o portraits vedo normale, tutte le cose uguali, ma se apro masterpieces vedo le cose in grande. ovviamente devo continuare comunque a vederle normalmente nelle altre categorie. esempio: in portraits vedo normalmente beatrice bikerfest e eleonora, ma aprendo da masterpieces le vedo come MASTERPIECES
+- nel footer leggo copyright 2024, ma dev essere 2026
+- dalla homepage, dal mobile non si vede il menu se premo sulla nav bar. in pratica la nav bar non funziona
+- su about me, metti un piccolo floating window e mettici un link per insstagram di un mio collaboratore (homie) e questo è il link suo: https://www.instagram.com/pigeon.jfif/
+- mettere piu spazio tra i pulsanti nella na bar, es tra home cars places ecc.
+
+------ index v6
+- facciamo che in portraits, beatrice riporta alla sua sezione quella stessa presente in masterpiece, ma solo beatrice, non 911_70. 
+- rendi leggermente trasparente i liquid glass windows
+- metti animazioni ai titoli, esempio quello del titolo che si scrive quando carico la pagina
+- infine, migliora la pagina masterpieces, non voglio che ci scrivi piu cose o altro, ma sistema quella pagina, mettici piu dettagli, foglie rosa che cadono o altro, migliora quella pagina, quella pagina dev essere il top.
+
+------ index v7
+- nella pagina about si vede troppo il link insta di nicola da mobile, vorrei in qualche modo che ci fosse sempre la possibilita di arrivare alla parte per contattarmi
+- quando apro cars, il sito è online su github. quando apro cars, si sballa tuta la pagina a caricare tutte le foto, quindi metterei una pagina di caricamento finchè non ha caricato tutte le foto
+- quando scrollo giu nella pagina porsche 911_70 le colonne a dx e sx vanno verso su mentre quella centrale va giu, aggiungi queste animazioni meglio falle te come credi meglio
+
+------ index v8
+- quando accetti i cookies ti fa una piccola animazioni e ti dice un piccolo thanks con cuorici attorno
+- in cars esempio metti in centro un pulsante pe r tornare in cima alla pagine e mettilo anche inaltre pagine dove necessita
+
+
+------ index v8.1
+- il floating window about me get in touch, dev essere visibile sempre visibile, piccolino nel angolino.
+- non vedo il pulsante back to top
+
+------ index -> portfolio_v2
+- ottimizza questo codice, dividi i linguaggi
+- separa il file in diversi file, con diverse pagine per categorie ecc. es. index.html, style.css, cars.html ecc, come credi oppurtuno ovviamente, voglio solo che sia tutto diviso in piu file, che poi sistemero in cartelle e sottocartelle, quindi poi mi darai anche il tree, cosi le metto giuste, voglio piu suddivisione per file possbile.
+- ecco il tree degli assets, se vuoi posso cambiarlo e sistemarlo dopo con le tue indicazioni:
+
+
+
+
+------ portfolio_v3
+
+
+Guardando il progetto così com'è, ecco le aree più impattanti ordinate per priorità reale:
+
+Compatibilità .heic — è il problema più urgente. Chrome, Firefox e tutti i browser non-Apple non aprono i file .heic. Metà delle tue foto (Beatrice, Verona, le tue personali) non si vedono su Windows o Android. Convertile in .jpg o .webp e aggiorna gli array in data.js e negli HTML delle sottopagine. È un lavoro manuale ma necessario per chiunque non usi Safari.
+Performance delle immagini — le foto originali della fotocamera pesano 5-15MB l'una. Il sito carica tutto insieme, specialmente la pagina Cars con 60+ foto. Dovresti comprimere e ridimensionare: massimo 1920px di larghezza, formato .webp, qualità 80%. Strumenti gratuiti: Squoosh (web), ImageOptim (Mac), o uno script con ffmpeg/imagemagick. La differenza di velocità sarebbe enorme.
+Lazy loading reale con Intersection Observer — ora usi loading="lazy" nativo sull'attributo <img>, che funziona ma non è preciso. Per la masonry potresti caricare le immagini in batch mentre l'utente scorre, invece di iniettarle tutte nel DOM subito. Questo ridurrebbe il tempo al first paint.
+SEO e meta tag per le sottopagine — ogni pagina ha lo stesso og:title ("nev took that") e la stessa og:image. Se qualcuno condivide masterpieces/beatrice.html su Instagram, l'anteprima è identica alla homepage. Ogni pagina dovrebbe avere un titolo e un'immagine di preview specifici.
+Transizioni tra pagine — ora navigare da cars.html a places.html è una ricarica brusca. Con la View Transitions API (supportata in Chrome 111+) potresti aggiungere un fade o uno slide tra le pagine con pochissimo codice, senza tornare a una SPA.
+404.html — GitHub Pages mostra una pagina di errore generica se qualcuno visita un URL sbagliato. Creare un 404.html con la tua navbar e un link alla home è una cosa piccola ma professionale.
+Accessibilità — le immagini nella masonry hanno alt="" o alt="Beatrice 1" generici. Aggiungere descrizioni reali aiuta i motori di ricerca e gli screen reader. Anche il contrasto del testo muted su sfondo crema è borderline secondo le WCAG.
+-----------------
+
+------ portfolio_v3.1
+
+- questo è l'albero che adesso:
+gallery/
+├── content/
+│   ├── cars/
+│   │   ├── ford/
+│   │   │   ├── escort-rs/ford-escort-rs-[01–05].webp
+│   │   │   └── mustang/
+│   │   │       ├── fastback/ford-mustang-fastback-[01–12].webp
+│   │   │       └── gt-v8/ford-mustang-gt-v8-[01–08].webp
+│   │   ├── mazda/
+│   │   │   └── mx5/2025/mazda-mx5-2025-[01–15].webp
+│   │   └── toyota/
+│   │       └── celica/toyota-celica-[01–10].webp
+│   │
+│   ├── media/
+│   │
+│   ├── people/
+│   │   ├── beatrice/beatrice-[01–08].webp
+│   │   ├── bikerfest/bikerfest-[01–12].webp
+│   │   └── eleonora/eleonora-[01–04].webp
+│   │
+│   └── places/
+│       ├── cansiglio/cansiglio-[01–03].webp
+│       ├── molveno/lake-molveno-[01–06].webp
+│       ├── museo-india/museo-india-[01–07].webp
+│       └── verona/verona-[01–07].webp
+│
+└── system/
+    ├── assets/{logo, preview}.webp
+    └── misc/my-stuff-[01–06].webp
+				
+- Lazy loading reale con Intersection Observer — ora usi loading="lazy" nativo sull'attributo <img>, che funziona ma non è preciso. Per la masonry potresti caricare le immagini in batch mentre l'utente scorre, invece di iniettarle tutte nel DOM subito. Questo ridurrebbe il tempo al first paint.
+- SEO e meta tag per le sottopagine — ogni pagina ha lo stesso og:title ("nev took that") e la stessa og:image. Se qualcuno condivide masterpieces/beatrice.html su Instagram, l'anteprima è identica alla homepage. Ogni pagina dovrebbe avere un titolo e un'immagine di preview specifici.
+- Transizioni tra pagine — ora navigare da cars.html a places.html è una ricarica brusca. Con la View Transitions API (supportata in Chrome 111+) potresti aggiungere un fade o uno slide tra le pagine con pochissimo codice, senza tornare a una SPA.
+- 404.html — GitHub Pages mostra una pagina di errore generica se qualcuno visita un URL sbagliato. Creare un 404.html con la tua navbar e un link alla home è una cosa piccola ma professionale.
+- Accessibilità — le immagini nella masonry hanno alt="" o alt="Beatrice 1" generici. Aggiungere descrizioni reali aiuta i motori di ricerca e gli screen reader. Anche il contrasto del testo muted su sfondo crema è borderline secondo le WCAG.
+- Animazione di entrata pagina — ogni pagina appare istantaneamente. Un semplice fade-in del <main> (100ms, opacity 0 → 1) renderebbe ogni navigazione molto più fluida senza impatto sulle performance.
+				
+				
+				
+				
+				
+Cookie banner GDPR reale — ora il banner è puramente estetico: accettare non fa nulla di diverso dal non accettare, perché il sito non usa tracker. Se in futuro aggiungessi Google Analytics o simili, dovresti bloccarli fino all'accettazione. Adesso va bene, ma tienilo a mente.
+
+------ portofolio v3.2
+- aggiunta di foto aurora
+- aggiunta di foto castello di 
+
+------ portfolio v3.4
+- aggiunta delle porsche di nuovo
+
+------ portfolio v3.5
+- sistema la navbar, è staccata dalla pagina, guarda l'immagine in allegato. intanto sistema il colore della navbar in pagina aurora e poi il suo posiziojamento e tutto.
+- text selection cambialo da blu a un colore in tema.
+- sistema le traduzioni, per esempio portraits su un dispositivo di un mio amico lo ha tradotto in ratti dei porti. voglio che i titoli non possano essere tradotti e il resto possa essere tradotto "bene"
+- non puoi fare un file esterno che gestisce la nav bar e il footer ecc?
+- la pagine del castello di miramare si deve chiamare castello di miramare, non solo castello.
+- ottimizza al meglio il codice e sistema i bug e effetti visivi. 
+
+------ portfolio v3.6
+- aggiungi le animazioni che hai aggiunto sullo scorrimento in porsche 911_70 anche in cars
+- sempre nella scheda 911_70, il 70 del titolo non si legge 
+- la barra di scorrimento laterale falla personalizzata in tema con la pagina
+
+------ portfolio v3.7
+- rendi il sito più "smooth" da scollare e muoversi dentro, piu animazioni fluidi che aumentino la user experience
+- Modificare il banner cookies
+- Avere una privacy policy sul sito che menzioni l'uso di Google Analytics
+- Informare gli utenti sui cookie raccolti
+- Mettere un link a google.com/policies/privacy/partners
+- da aggiungere questo tag:
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4CC6DT5ST"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y4CC6DT5ST');
+</script>
+
+------ portfolio v3.7.1
+- sistemare la nav bar, non dev un elemento prima nella pagina, ma lo vorrei SOPRA la pagina.
+- ci sono bug con le animazioni, tipo quando faccio hover alle schede in index, ce un mini scatto. credo sia perche passano dallo stato di floating a statiche quinid si vedere brutto
+- aggiungi animazioni tra scambio di pagine, esempio quando passo da index.html a cars.html ecc.
+- ci sono delle righe dei cookie che appaiono in sottosopra  tipo "This site uses cookiesNo data is sold or shared with third parties, Got it"
+- l'animazione di thanks for accepting, eliminala.
+- la pagine privacy.html è formattata male, sembra per mobile ui. e mettici solo le cose essenziali, togli il codice della proprietà e tienici solo le cose piu importanti
+- da mobile non si vedono tutte le foto. esempio da pc vedo 3 colonne, da mobile solo le foto di quella centrale
+- metti keywords per far trovare il mio sito online e renderlo piu google lgbtq friendly
+
+
+------ portfolio v3.7.2?
+landing page? che potrebbe essere aperta da qr code che io do in giro e mi fa vedere una pagina che permette alla persona di contattarmi e questa pagine mi consiglia anche di andare a guardare la categoria cars. darò in giro questo bigliettino da visita, o li metterò su macchine in giro.
+
+
+homepage
+landing page
+logically blog => come si potrebbe dare un area blog al sito, non una area news, dobbiamo fare una scopata con la seo per portare le persone al nostro sito e aggiungere la sezione FAQ (che poi sostituisce la logically page
+
+utilizzare il DOC del buyer frocio di merda e scoparsi un rinoceronte
+
+
+- sistema meglio le pagine
+- la landing page assomiglia molto alla homepage, ed è anche troppo lunga, dev essere di impatto. (guarda le foto)
+- sistema anche la blog page.
+- rifai e migliora.
+- mantieni il tema
+- per le immagini ti allego le info delle immagini che ho scaricato, si trovano tutte sotto la cartella artworks:
+
+
+adesso devo fare un ppt per presentare questo lavoro, siamo in 4 (nev, gab, ruben, lollo)
+dividi equamente il lavoro, e preparami una presentazione per il lavoro. preparami due file, uno docs che mi dice tutte le cose che devo dire, e l'altro invece il ppt effettivo. voglio mettere meno cose possibili nel ppt, quindi titolo, sottotitolo e poi magari una foto del sito che dopo carico io e tu puoi semplicemente metterci un placeholder. vorrei cose come "Questa sezione è strutturata con markup codeFAQ Schemacode per massimizzare la visibilità nei risultati di ricerca Google. Le domande qui presenti vengono indicizzate come rich snippet." nel powerpoint e poi sul docs mi spiega tutto su come funziona, cos'è e tutte le altre cose che servono. la presentazione va fatta di entrambe le pagine, quindi sia la landing page e sia la logically blog. 

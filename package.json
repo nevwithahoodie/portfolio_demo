@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/nevwithahoodie/portfolio_demo#readme",
   "devDependencies": {
-    "prettier": "^3.8.2"
+    "prettier": "^3.8.3"
   }
 }
