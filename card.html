@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Nev — Automotive & Portrait Photography</title>
+    <meta
+      name="description"
+      content="Photography by Navpreet Singh — cars, places &amp; people. Based in Pordenone, Friuli. Contact for collaborations."
+    />
+    <meta
+      name="keywords"
+      content="Nev photographer, nevwithahoodie, automotive photography Pordenone, car photography Italy, portrait photographer Friuli"
+    />
+    <meta name="author" content="Navpreet Singh" />
+    <meta name="theme-color" content="#0e0c08" />
+    <meta property="og:title" content="Nev — Photography" />
+    <meta
+      property="og:description"
+      content="Cars, places &amp; people — photography by Nev."
+    />
+    <meta
+      property="og:image"
+      content="https://nevwithahoodie.github.io/portfolio_demo/gallery/system/assets/preview.webp"
+    />
+    <meta property="og:type" content="profile" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/webp" href="gallery/system/assets/logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --fd: "Bebas Neue", sans-serif;
+        --fb: "Outfit", sans-serif;
+        --cream: #faf6f3;
+        --gold: #c9a227;
+        --gold-light: #e8d090;
+        --text-dim: rgba(232, 208, 144, 0.45);
+        --ease: 0.38s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      html,
+      body {
+        height: 100%;
+        font-family: var(--fb);
+        background: #08060200;
+        color: var(--gold-light);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* ── Background — photo with dark overlay ── */
+      .bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background:
+          linear-gradient(
+            160deg,
+            rgba(4, 3, 0, 0.8) 0%,
+            rgba(8, 6, 2, 0.7) 40%,
+            rgba(12, 8, 0, 0.82) 100%
+          ),
+          linear-gradient(to bottom, #0e0c04 0%, #1a1400 100%);
+      }
+      /* Subtle grain */
+      .bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.045'/%3E%3C/svg%3E");
+      }
+      /* ── Layout ── */
+      .wrap {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+          env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+      }
+      /* ── Hero section ── */
+      .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 32px 32px;
+        max-width: 540px;
+      }
+      /* Tag line */
+      .tag {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.75;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        animation: fadeUp 0.7s 0.1s ease both;
+      }
+      .tag::before {
+        content: "";
+        width: 32px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold));
+      }
+      /* Big name */
+      .name {
+        font-family: var(--fd);
+        font-size: clamp(88px, 22vw, 160px);
+        line-height: 0.82;
+        color: var(--gold-light);
+        letter-spacing: -3px;
+        animation: fadeUp 0.75s 0.18s ease both;
+      }
+      .name span {
+        color: var(--gold);
+      }
+      /* Tagline */
+      .tagline {
+        font-size: clamp(16px, 3.5vw, 20px);
+        color: var(--text-dim);
+        font-weight: 400;
+        line-height: 1.7;
+        margin-top: 22px;
+        max-width: 360px;
+        animation: fadeUp 0.7s 0.28s ease both;
+      }
+      /* Location pill */
+      .loc {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 20px;
+        padding: 6px 14px;
+        background: rgba(201, 162, 39, 0.1);
+        border: 1px solid rgba(201, 162, 39, 0.22);
+        border-radius: 100px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.8;
+        width: fit-content;
+        animation: fadeUp 0.7s 0.36s ease both;
+      }
+      /* ── CTA buttons ── */
+      .cta {
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 540px;
+        animation: fadeUp 0.7s 0.44s ease both;
+      }
+      /* Primary — Cars */
+      .btn-cars {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(201, 162, 39, 0.18),
+          rgba(201, 162, 39, 0.08)
+        );
+        border: 1px solid rgba(201, 162, 39, 0.35);
+        border-radius: 20px;
+        text-decoration: none;
+        color: var(--gold-light);
+        transition: all var(--ease);
+        cursor: pointer;
+      }
+      .btn-cars:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(201, 162, 39, 0.28),
+          rgba(201, 162, 39, 0.14)
+        );
+        border-color: rgba(201, 162, 39, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(201, 162, 39, 0.15);
+      }
+      .btn-cars:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .btn-cars-left {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .btn-cars-lbl {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.7;
+      }
+      .btn-cars-title {
+        font-family: var(--fd);
+        font-size: 32px;
+        line-height: 1;
+        color: var(--gold-light);
+      }
+      .btn-cars-sub {
+        font-size: 12px;
+        color: var(--text-dim);
+        margin-top: 2px;
+      }
+      .btn-cars-arr {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(201, 162, 39, 0.15);
+        border: 1px solid rgba(201, 162, 39, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        transition: all var(--ease);
+        flex-shrink: 0;
+      }
+      .btn-cars:hover .btn-cars-arr {
+        background: rgba(201, 162, 39, 0.28);
+        transform: translateX(3px);
+      }
+      /* Contact row */
+      .contacts {
+        display: flex;
+        gap: 10px;
+      }
+      .btn-contact {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        text-decoration: none;
+        color: rgba(232, 208, 144, 0.75);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all var(--ease);
+      }
+      .btn-contact:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: var(--gold-light);
+        transform: translateY(-2px);
+      }
+      .btn-contact:active {
+        transform: scale(0.97);
+      }
+      .btn-contact.ig:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(131, 58, 180, 0.25),
+          rgba(253, 29, 29, 0.2),
+          rgba(252, 176, 69, 0.2)
+        );
+        border-color: rgba(252, 176, 69, 0.35);
+      }
+      /* Portfolio link */
+      .btn-portfolio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 13px 16px;
+        background: rgba(201, 162, 39, 0.07);
+        border: 1px solid rgba(201, 162, 39, 0.15);
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--text-dim);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all var(--ease);
+      }
+      .btn-portfolio:hover {
+        background: rgba(201, 162, 39, 0.12);
+        color: var(--gold);
+        transform: translateY(-1px);
+      }
+      /* ── Divider ── */
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(201, 162, 39, 0.18),
+          transparent
+        );
+        margin: 0 32px;
+        animation: fadeUp 0.6s 0.5s ease both;
+      }
+      /* ── Footer ── */
+      .foot {
+        padding: 20px 32px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeUp 0.6s 0.56s ease both;
+      }
+      .foot-copy {
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(201, 162, 39, 0.28);
+      }
+      .foot-logo {
+        font-family: var(--fd);
+        font-size: 22px;
+        letter-spacing: 3px;
+        color: rgba(232, 208, 144, 0.2);
+      }
+      .foot-logo span {
+        color: rgba(201, 162, 39, 0.35);
+      }
+      /* ── Keyframes ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* ── Reduced motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+      /* ── Desktop: side-by-side ── */
+      @media (min-width: 640px) {
+        .wrap {
+          flex-direction: row;
+          align-items: stretch;
+        }
+        .hero {
+          flex: 1;
+          padding: 80px 48px;
+          justify-content: flex-end;
+          max-width: none;
+        }
+        .right {
+          width: 380px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          border-left: 1px solid rgba(201, 162, 39, 0.1);
+          padding: 60px 0;
+        }
+        .cta {
+          max-width: none;
+        }
+        .divider {
+          display: none;
+        }
+        .foot {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+
+    <div class="wrap">
+      <!-- ── Left: Identity ── -->
+      <div class="hero">
+        <div class="tag">Automotive &amp; Portrait Photography</div>
+        <div class="name">NEV<span>.</span></div>
+        <p class="tagline">
+          Cars, places &amp; people — captured through the lens of a 20-year-old
+          obsessed with light, motion, and the perfect frame.
+        </p>
+        <div class="loc">
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+            />
+            <circle cx="12" cy="9" r="2.5" />
+          </svg>
+          Pordenone, Italy
+        </div>
+      </div>
+
+      <!-- ── Right: Actions ── -->
+      <div class="right">
+        <div class="divider"></div>
+
+        <div class="cta">
+          <!-- Cars CTA — main recommendation -->
+          <a class="btn-cars" href="cars.html">
+            <div class="btn-cars-left">
+              <div class="btn-cars-lbl">Featured portfolio</div>
+              <div class="btn-cars-title">AUTOMOTIVE</div>
+              <div class="btn-cars-sub">53 photos &middot; 7 machines</div>
+            </div>
+            <div class="btn-cars-arr">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+
+          <!-- Contact row -->
+          <div class="contacts">
+            <a
+              class="btn-contact"
+              href="mailto:navpreet.singh1209@gmail.com"
+              aria-label="Send email"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m2 7 10 7 10-7" />
+              </svg>
+              Email
+            </a>
+            <a
+              class="btn-contact ig"
+              href="https://www.instagram.com/nev.shotz/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
+              </svg>
+              @nev.shotz
+            </a>
+          </div>
+
+          <!-- Full portfolio link -->
+          <a class="btn-portfolio" href="index.html">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="2" y="2" width="9" height="9" rx="1" />
+              <rect x="13" y="2" width="9" height="9" rx="1" />
+              <rect x="2" y="13" width="9" height="9" rx="1" />
+              <rect x="13" y="13" width="9" height="9" rx="1" />
+            </svg>
+            View full portfolio
+          </a>
+        </div>
+      </div>
+      <!-- /right -->
+    </div>
+    <!-- /wrap -->
+
+    <div class="foot">
+      <div class="foot-copy">&copy; 2026 Navpreet Singh</div>
+      <div class="foot-logo">NEV<span>.</span></div>
+    </div>
+  </body>
+</html>

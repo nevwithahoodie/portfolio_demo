@@ -76,20 +76,47 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(_bindReveal, 650);
 });
 
-/* ── Image loaded fade-in ── */
+/* ── Image loaded fade-in + LQIP parent ── */
+function _markImgLoaded(img) {
+  img.classList.add("loaded");
+  const parent = img.closest(".mi, .ccard, .pcard");
+  if (parent) parent.classList.add("img-loaded");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("img:not([data-src])").forEach((img) => {
-    if (img.complete) img.classList.add("loaded");
+    if (img.complete && img.naturalWidth > 0) _markImgLoaded(img);
     else {
-      img.addEventListener("load", () => img.classList.add("loaded"), {
-        once: true,
-      });
-      img.addEventListener("error", () => img.classList.add("loaded"), {
-        once: true,
-      });
+      img.addEventListener("load", () => _markImgLoaded(img), { once: true });
+      img.addEventListener("error", () => _markImgLoaded(img), { once: true });
     }
   });
 });
+
+/* Also catch dynamically injected images (masonry, cars) */
+const _imgObserver = new MutationObserver((mutations) => {
+  mutations.forEach((m) =>
+    m.addedNodes.forEach((node) => {
+      if (node.nodeType !== 1) return;
+      const imgs = node.matches("img")
+        ? [node]
+        : [...node.querySelectorAll("img")];
+      imgs.forEach((img) => {
+        if (img.dataset.src) return; /* IntersectionObserver handles lazy */
+        if (img.complete && img.naturalWidth > 0) _markImgLoaded(img);
+        else {
+          img.addEventListener("load", () => _markImgLoaded(img), {
+            once: true,
+          });
+          img.addEventListener("error", () => _markImgLoaded(img), {
+            once: true,
+          });
+        }
+      });
+    }),
+  );
+});
+_imgObserver.observe(document.body, { childList: true, subtree: true });
 
 /* ── Back to top ── */
 (function () {

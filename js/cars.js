@@ -65,6 +65,15 @@ function initCars() {
       const src = c.folder + "/" + f;
       const d = document.createElement("div");
       d.className = "mi";
+      /* Placeholder color based on car accent */
+      d.dataset.ph =
+        c.id === "p911"
+          ? "car-gold"
+          : c.id === "fastback" || c.id === "v8"
+            ? "car-red"
+            : c.id === "miata"
+              ? "car-green"
+              : "car";
 
       const img = document.createElement("img");
       img.src = src;
@@ -73,6 +82,18 @@ function initCars() {
       img.decoding = "async";
       img.width = 800;
       img.height = 533;
+      img.addEventListener(
+        "load",
+        function () {
+          img.classList.add("loaded");
+          d.classList.add("img-loaded");
+        },
+        { once: true },
+      );
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add("loaded");
+        d.classList.add("img-loaded");
+      }
 
       const ov = document.createElement("div");
       ov.className = "mi-ov";
