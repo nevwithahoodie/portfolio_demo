@@ -1,25 +1,32 @@
 /* ══════════════════════════════════
-   SMOOTH.CSS — UX animations & polish
-   Loaded on every page after ui.css
+   SMOOTH.CSS — single source of truth
+   for all interactive transitions.
+
+   Rules:
+   · No cubic-bezier with overshoot (x2 > 1)
+   · No `transition: all` — always explicit
+   · One definition per element
+   · GPU: only transform + opacity
+   · Durations: 0.26s micro / 0.38s standard / 0.55s entrance
 ══════════════════════════════════ */
 
-/* ── Smooth scrolling (already on html, reinforced) ── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ── Better font rendering ── */
+/* ── Font rendering ── */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
+/* ── Easing tokens (local) ── */
+:root {
+  --t-fast:   .26s cubic-bezier(.4,0,.2,1);
+  --t-std:    .38s cubic-bezier(.4,0,.2,1);
+  --t-enter:  .55s cubic-bezier(.2,0,0,1);   /* decelerate entrance */
+  --t-img:    .5s  cubic-bezier(.4,0,.2,1);
+}
+
 /* ══════════════════════════════════
-   REVEAL SYSTEM — staggered IntersectionObserver
-   Classes: .reveal (base), .reveal-up, .reveal-left,
-            .reveal-scale, .reveal-fade
-   Delay via [data-delay="100"] etc.
+   REVEAL — scroll entrance
 ══════════════════════════════════ */
 .reveal,
 .reveal-up,
@@ -27,500 +34,282 @@ body {
 .reveal-scale,
 .reveal-fade {
   opacity: 0;
-  transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  transition: opacity var(--t-enter), transform var(--t-enter);
 }
+.reveal, .reveal-up   { transform: translateY(24px); }
+.reveal-left          { transform: translateX(-24px); }
+.reveal-scale         { transform: scale(.95); }
+.reveal-fade          { transform: none; }
+.reveal.vis, .reveal-up.vis, .reveal-left.vis,
+.reveal-scale.vis, .reveal-fade.vis { opacity: 1; transform: none; }
 
-.reveal,
-.reveal-up {
-  transform: translateY(28px);
-}
-.reveal-left {
-  transform: translateX(-28px);
-}
-.reveal-scale {
-  transform: scale(0.94);
-}
-.reveal-fade {
-  transform: none;
-}
-
-.reveal.vis,
-.reveal-up.vis,
-.reveal-left.vis,
-.reveal-scale.vis,
-.reveal-fade.vis {
-  opacity: 1;
-  transform: none;
-}
-
-/* Delay helpers */
-[data-delay="100"] {
-  transition-delay: 0.1s;
-}
-[data-delay="150"] {
-  transition-delay: 0.15s;
-}
-[data-delay="200"] {
-  transition-delay: 0.2s;
-}
-[data-delay="300"] {
-  transition-delay: 0.3s;
-}
-[data-delay="400"] {
-  transition-delay: 0.4s;
-}
-[data-delay="500"] {
-  transition-delay: 0.5s;
-}
-[data-delay="600"] {
-  transition-delay: 0.6s;
-}
+[data-delay="100"] { transition-delay: .10s; }
+[data-delay="200"] { transition-delay: .20s; }
+[data-delay="300"] { transition-delay: .30s; }
+[data-delay="400"] { transition-delay: .40s; }
+[data-delay="500"] { transition-delay: .50s; }
+[data-delay="600"] { transition-delay: .60s; }
 
 /* ══════════════════════════════════
-   NAV — micro-interactions
+   NAV
 ══════════════════════════════════ */
 .nl {
-  transition:
-    color 0.22s ease,
-    background 0.22s ease,
-    box-shadow 0.22s ease,
-    transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: color var(--t-fast), background var(--t-fast), box-shadow var(--t-fast);
 }
-.nl:active {
-  transform: scale(0.95);
-}
+.nl:active { opacity: .7; }
 
-.logo {
-  transition:
-    opacity 0.2s ease,
-    color 0.35s ease,
-    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+.logo { transition: opacity var(--t-fast), color var(--t-fast), transform var(--t-fast); }
+.logo:hover { opacity: .7; transform: scale(1.03); }
+.logo:active { transform: scale(.97); }
+
+.nav-about {
+  transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
 }
-.logo:hover {
-  opacity: 0.72;
-  transform: scale(1.04);
-}
-.logo:active {
-  transform: scale(0.96);
-}
+.nav-about:active { transform: scale(.96); }
 
 /* ══════════════════════════════════
-   CARDS — enhanced hover physics
+   BENTO CARDS (index)
 ══════════════════════════════════ */
 .ccard {
-  transition:
-    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.4s ease,
-    opacity 0.6s ease; /* for entrance animation */
+  transition: transform var(--t-std), box-shadow var(--t-std), opacity var(--t-enter);
 }
 .ccard:hover {
-  transform: translateY(-14px) scale(1.028) translateZ(0) !important;
-  box-shadow:
-    0 36px 80px rgba(61, 31, 16, 0.22),
-    0 12px 24px rgba(61, 31, 16, 0.1);
+  transform: translateY(-12px) scale(1.024) translateZ(0);
+  box-shadow: 0 32px 72px rgba(61,31,16,.20), 0 10px 20px rgba(61,31,16,.08);
 }
 .ccard:active {
-  transform: translateY(-6px) scale(1.01) translateZ(0) !important;
+  transform: translateY(-4px) scale(1.008) translateZ(0);
+  transition-duration: .14s;
 }
-
-.pcard {
-  transition:
-    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 0.38s ease;
+.ccard img {
+  transition: transform var(--t-std), opacity var(--t-img);
 }
-.pcard:hover {
-  transform: translateY(-10px) scale(1.022);
-  box-shadow: 0 28px 68px rgba(0, 0, 0, 0.18);
-}
-.pcard:active {
-  transform: translateY(-4px) scale(1.01);
-}
-
-.mp-card {
-  transition:
-    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 0.38s ease;
-}
-.mp-card:hover {
-  transform: translateY(-16px) scale(1.018);
-  box-shadow:
-    0 44px 110px rgba(0, 0, 0, 0.62),
-    0 0 0 1px rgba(201, 162, 39, 0.24),
-    0 0 90px rgba(201, 162, 39, 0.1);
-}
+.ccard:hover img { transform: scale(1.05); }
 
 /* ══════════════════════════════════
-   MASONRY ITEMS — hover refinement
+   PLACE / PORTRAIT CARDS
+══════════════════════════════════ */
+.pcard {
+  transition: transform var(--t-std), box-shadow var(--t-std);
+}
+.pcard:hover {
+  transform: translateY(-8px) scale(1.018);
+  box-shadow: 0 24px 60px rgba(0,0,0,.16);
+}
+.pcard:active {
+  transform: translateY(-2px) scale(1.004);
+  transition-duration: .14s;
+}
+.pcard img {
+  transition: transform var(--t-std), opacity var(--t-img);
+}
+.pcard:hover img { transform: scale(1.06); }
+
+/* ══════════════════════════════════
+   MASTERPIECE CARDS
+══════════════════════════════════ */
+.mp-card {
+  transition: transform var(--t-std), box-shadow var(--t-std);
+}
+.mp-card:hover {
+  transform: translateY(-12px) scale(1.016);
+  box-shadow: 0 40px 100px rgba(0,0,0,.58),
+              0 0 0 1px rgba(201,162,39,.22);
+}
+.mp-card:active { transform: translateY(-4px) scale(1.004); transition-duration: .14s; }
+.mp-card img { transition: transform var(--t-std), filter .4s ease, opacity var(--t-img); }
+.mp-card:hover img { transform: scale(1.07); }
+
+/* ══════════════════════════════════
+   MASONRY ITEMS
 ══════════════════════════════════ */
 .mi {
-  transition:
-    transform 0.42s cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 0.38s ease;
+  transition: transform var(--t-std), box-shadow var(--t-std);
 }
 .mi:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 44px rgba(61, 31, 16, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(61,31,16,.16);
 }
-.mi:active {
-  transform: translateY(-2px) scale(0.99);
-}
-/* Image zoom — same smooth easing for in AND out */
+.mi:active { transform: translateY(-1px); transition-duration: .12s; }
 .mi img {
-  transition: transform 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform var(--t-std), opacity var(--t-img);
 }
-.mi:hover img {
-  transform: scale(1.05);
-}
+.mi:hover img { transform: scale(1.04); }
+.mi-ov { transition: background var(--t-fast); }
 
 /* ══════════════════════════════════
    BUTTONS
 ══════════════════════════════════ */
-.btn-p,
-.btn-o,
-.cookie-btn,
-.bea-ig,
-.ele-ig,
-.bf-ig,
-.rora-ig,
-.nav-about {
-  transition:
-    background 0.22s ease,
-    color 0.22s ease,
-    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.22s ease;
+.btn-p {
+  transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
 }
-.btn-p:active,
-.btn-o:active,
-.cookie-btn:active,
-.nav-about:active {
-  transform: scale(0.96) translateY(0) !important;
+.btn-p:hover { transform: translateY(-2px); }
+.btn-p:active { transform: scale(.96); transition-duration: .12s; }
+
+.btn-o {
+  transition: background var(--t-fast), color var(--t-fast),
+              transform var(--t-fast), border-color var(--t-fast);
 }
+.btn-o:hover { transform: translateY(-2px); }
+.btn-o:active { transform: scale(.96); transition-duration: .12s; }
+
+.ck-btn-all, .ck-btn-ess {
+  transition: background var(--t-fast), color var(--t-fast),
+              transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+}
+.ck-btn-all:active, .ck-btn-ess:active { transform: scale(.96); transition-duration: .12s; }
+
+/* Portrait / place ig buttons */
+.bea-ig, .ele-ig, .bf-ig, .rora-ig {
+  transition: transform var(--t-std), box-shadow var(--t-std);
+}
+.bea-ig:hover, .ele-ig:hover, .bf-ig:hover, .rora-ig:hover { transform: translateY(-2px); }
+.bea-ig:active, .ele-ig:active, .bf-ig:active, .rora-ig:active { transform: scale(.96); }
 
 /* ══════════════════════════════════
    BACK BUTTON
 ══════════════════════════════════ */
-.back {
-  transition:
-    color 0.2s ease,
-    gap 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-.back svg {
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.back:hover svg {
-  transform: translateX(-5px);
-}
+.back { transition: color var(--t-fast); }
+.back svg { transition: transform var(--t-std); }
+.back:hover svg { transform: translateX(-5px); }
 
 /* ══════════════════════════════════
-   CONTACT CARDS
+   CONTACT / STAT CARDS
 ══════════════════════════════════ */
 .contact-card {
-  transition:
-    background 0.3s ease,
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.3s ease;
+  transition: background var(--t-std), transform var(--t-std), box-shadow var(--t-std);
 }
-.contact-card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.98),
-    0 20px 48px rgba(61, 31, 16, 0.14);
-}
-.contact-card:active {
-  transform: translateY(-2px);
-}
+.contact-card:hover { transform: translateY(-5px); }
+.contact-card:active { transform: translateY(-1px); transition-duration: .12s; }
 
 .stat {
-  transition:
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.3s ease;
+  transition: transform var(--t-std), box-shadow var(--t-std);
 }
-.stat:hover {
-  transform: translateY(-4px);
-}
+.stat:hover { transform: translateY(-3px); }
+
+.collab-card { transition: background var(--t-std), transform var(--t-std), box-shadow var(--t-std); }
+.collab-card:hover { transform: translateY(-3px); }
+.collab-ig { transition: transform var(--t-fast), box-shadow var(--t-fast); }
+.collab-card:hover .collab-ig { transform: scale(1.08); }
 
 /* ══════════════════════════════════
-   GIT FLOAT — smoother entrance
+   FOOTER
 ══════════════════════════════════ */
-#git-float {
-  animation: gitFadeIn 0.6s 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-@keyframes gitFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.9);
-  }
-  to {
-    opacity: 0.82;
-    transform: translateY(0) scale(1);
-  }
-}
+.ft-link { transition: color var(--t-fast); }
+.ft-soc-btn { transition: transform var(--t-std), box-shadow var(--t-std); }
+.ft-soc-btn:hover { transform: translateY(-3px) scale(1.06); }
+.ft-soc-btn:active { transform: scale(.94); transition-duration: .12s; }
 
 /* ══════════════════════════════════
-   FOOTER links
-══════════════════════════════════ */
-.ft-link {
-  transition:
-    color 0.2s ease,
-    gap 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.ft-link:hover {
-  gap: 10px;
-}
-
-.ft-soc-btn {
-  transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.3s ease;
-}
-.ft-soc-btn:hover {
-  transform: translateY(-4px) scale(1.08);
-}
-.ft-soc-btn:active {
-  transform: scale(0.95);
-}
-
-/* ══════════════════════════════════
-   LIGHTBOX — smoother open/close
-══════════════════════════════════ */
-#lb {
-  transition: opacity 0.25s ease;
-}
-#lb.open {
-  animation: lbIn 0.28s ease both;
-}
-@keyframes lbIn {
-  from {
-    opacity: 0;
-    backdrop-filter: blur(0px);
-  }
-  to {
-    opacity: 1;
-    backdrop-filter: blur(22px);
-  }
-}
-#lb img {
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  animation: lbImgIn 0.3s ease both;
-}
-@keyframes lbImgIn {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.lb-nav {
-  transition:
-    background 0.2s ease,
-    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.lb-nav:hover {
-  transform: translateY(-50%) scale(1.12);
-}
-.lb-nav:active {
-  transform: translateY(-50%) scale(0.92);
-}
-
-/* ══════════════════════════════════
-   FILTER PILLS (Cars)
+   FILTER PILLS
 ══════════════════════════════════ */
 .fpill {
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.25s ease;
+  transition: background var(--t-fast), color var(--t-fast),
+              transform var(--t-fast), box-shadow var(--t-fast);
 }
-.fpill:hover {
-  transform: translateY(-3px);
+.fpill:hover { transform: translateY(-2px); }
+.fpill:active { transform: scale(.96); transition-duration: .12s; }
+
+/* ══════════════════════════════════
+   GIT FLOAT
+══════════════════════════════════ */
+#git-float {
+  transition: transform var(--t-std), box-shadow var(--t-std), opacity var(--t-fast);
+  animation: gitIn .5s 1.6s cubic-bezier(.2,0,0,1) both;
 }
-.fpill:active {
-  transform: translateY(0) scale(0.96);
+#git-float:hover { transform: translateY(-2px) scale(1.03); opacity: 1; }
+#git-float:active { transform: scale(.97); transition-duration: .12s; }
+@keyframes gitIn {
+  from { opacity: 0; transform: translateY(10px) scale(.95); }
+  to   { opacity: .82; transform: none; }
 }
 
 /* ══════════════════════════════════
-   IMAGE LOAD FADE-IN
-   Applies as images load/decode
+   LIGHTBOX
 ══════════════════════════════════ */
-img {
-  transition: opacity 0.4s ease;
+#lb.open { animation: lbIn .24s ease both; }
+@keyframes lbIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-img[data-src] {
-  opacity: 0;
+#lb img { animation: lbImgIn .28s cubic-bezier(.2,0,0,1) both; }
+@keyframes lbImgIn {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: none; }
 }
-img.loaded {
-  opacity: 1;
-}
+.lb-nav { transition: background var(--t-fast), transform var(--t-fast); }
+.lb-nav:hover { background: rgba(255,255,255,.22); }
+.lb-x { transition: background var(--t-fast); }
 
 /* ══════════════════════════════════
-   HERO SCROLL HINT
+   SCROLL HINT
 ══════════════════════════════════ */
-.hscroll {
-  animation:
-    fsi 0.8s 0.82s ease both,
-    scrollBounce 2.4s 2s ease-in-out infinite;
-}
 @keyframes scrollBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
 }
+.hscroll { animation: fsi .8s .82s ease both, scrollBounce 2.4s 2.2s ease-in-out infinite; }
 
 /* ══════════════════════════════════
-   REDUCED MOTION — respect user pref
+   LQIP — image fade-in on load
+   Container gets placeholder bg color
+   Image fades in from opacity 0.
+   No ::before — cleaner and faster.
 ══════════════════════════════════ */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  #git-float {
-    animation: none !important;
-    opacity: 0.82;
-  }
-}
+.mi        { background: var(--img-ph, rgba(92,49,34,.07)); }
+.ccard     { background: var(--img-ph, rgba(20,12,8,.15)); }
+.pcard     { background: var(--img-ph, rgba(0,0,0,.10)); }
 
-/* ══════════════════════════════════
-   PAGE TRANSITION — JS-driven fade
-   Works on ALL browsers (fallback
-   for when View Transitions API
-   is not supported)
-══════════════════════════════════ */
-body.page-leaving main {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease;
-}
+[data-ph="car"]       { --img-ph: #1e1a16; }
+[data-ph="car-green"] { --img-ph: #141e10; }
+[data-ph="car-red"]   { --img-ph: #1e1010; }
+[data-ph="car-gold"]  { --img-ph: #141000; }
+[data-ph="forest"]    { --img-ph: #141c10; }
+[data-ph="lake"]      { --img-ph: #101620; }
+[data-ph="urban"]     { --img-ph: #1a1814; }
+[data-ph="warm"]      { --img-ph: #1e1610; }
+[data-ph="portrait"]  { --img-ph: #1c1410; }
+[data-ph="dark"]      { --img-ph: #080604; }
+[data-ph="night"]     { --img-ph: #060608; }
+[data-ph="earth"]     { --img-ph: #141210; }
 
-/* ══════════════════════════════════
-   LQIP — Color placeholder blur-up
-   Images fade in from a category-
-   matched solid color while loading.
-   The color is set via data-color on
-   the .mi / .ccard / .pcard element.
-══════════════════════════════════ */
-
-/* Base: images start invisible */
+/* Images start transparent, fade in when .loaded is added */
 .mi img,
 .ccard img,
 .pcard img {
   opacity: 0;
-  transition:
-    opacity 0.55s ease,
-    transform 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-/* When JS marks as loaded */
 .mi img.loaded,
 .ccard img.loaded,
 .pcard img.loaded {
   opacity: 1;
 }
 
-/* Placeholder background on the container */
-.mi {
-  background: var(--img-ph, rgba(92, 49, 34, 0.08));
-}
-.ccard {
-  background: var(--img-ph, rgba(92, 49, 34, 0.08));
-}
-.pcard {
-  background: var(--img-ph, rgba(0, 0, 0, 0.08));
-}
+/* ══════════════════════════════════
+   PAGE TRANSITION
+══════════════════════════════════ */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: .2s ease both vtOut; }
+::view-transition-new(root) { animation: .28s cubic-bezier(.2,0,0,1) both vtIn; }
+@keyframes vtOut { to   { opacity: 0; transform: translateY(-6px); } }
+@keyframes vtIn  { from { opacity: 0; transform: translateY(8px); } }
 
-/* ── Per-category colors ── */
-/* Cars — warm charcoal */
-[data-ph="car"] {
-  --img-ph: #2a2420;
-}
-[data-ph="car-green"] {
-  --img-ph: #1e2a1a;
-}
-[data-ph="car-red"] {
-  --img-ph: #2a1515;
-}
-[data-ph="car-gold"] {
-  --img-ph: #1a1600;
-}
-/* Places — nature/stone */
-[data-ph="forest"] {
-  --img-ph: #1e261a;
-}
-[data-ph="lake"] {
-  --img-ph: #1a2230;
-}
-[data-ph="urban"] {
-  --img-ph: #2a2420;
-}
-[data-ph="warm"] {
-  --img-ph: #2a1e10;
-}
-/* Portraits — skin/neutral */
-[data-ph="portrait"] {
-  --img-ph: #2a1e18;
-}
-[data-ph="dark"] {
-  --img-ph: #0a0808;
-}
-[data-ph="night"] {
-  --img-ph: #080810;
-}
-[data-ph="earth"] {
-  --img-ph: #1e1c16;
-}
-
-/* Blur effect on placeholder (removes on load) */
-.mi::before,
-.ccard::before,
-.pcard::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 0.55s ease 0.1s;
-}
-.mi.img-loaded::before,
-.ccard.img-loaded::before,
-.pcard.img-loaded::before {
+/* JS fallback (non-VT browsers) */
+body.page-leaving main {
   opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease;
 }
 
+/* ══════════════════════════════════
+   REDUCED MOTION
+══════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-  .mi img,
-  .ccard img,
-  .pcard img {
-    transition: none;
-    opacity: 1;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
   }
-  .mi::before,
-  .ccard::before,
-  .pcard::before {
-    display: none;
-  }
+  .mi img, .ccard img, .pcard img { opacity: 1; }
+  #git-float { opacity: .82; animation: none; }
 }

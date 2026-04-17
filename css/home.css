@@ -26,11 +26,11 @@
 .sline::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--brown); animation: slm 2.2s 1.6s ease infinite; }
 
 /* ══════ BUTTONS ══════ */
-.btn-p { background: var(--brown-dark); color: var(--cream); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 13px 30px; border-radius: 100px; transition: all var(--ease); cursor: pointer; border: none; font-family: var(--fb); }
+.btn-p { background: var(--brown-dark); color: var(--cream); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 13px 30px; border-radius: 100px; transition: background .26s ease, transform .26s ease, box-shadow .26s ease; cursor: pointer; border: none; font-family: var(--fb); }
 .btn-p:hover { background: var(--brown); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(61,31,16,.24); }
 .btn-o {
   background: rgba(255,255,255,0.28); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(61,31,16,0.28); color: var(--brown-dark); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 30px; border-radius: 100px; transition: all var(--ease); cursor: pointer; font-family: var(--fb);
+  border: 1.5px solid rgba(61,31,16,0.28); color: var(--brown-dark); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 30px; border-radius: 100px; transition: background .26s ease, color .26s ease, transform .26s ease, border-color .26s ease; cursor: pointer; font-family: var(--fb);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
 }
 .btn-o:hover { background: var(--brown-dark); color: var(--cream); transform: translateY(-2px); border-color: transparent; }
@@ -55,7 +55,7 @@
 .hcards .ccard:nth-child(3) { animation-delay: .22s; }
 .hcards .ccard:nth-child(4) { animation-delay: .30s; }
 .hcards .ccard:nth-child(5) { animation-delay: .38s; }
-.ccard img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.ccard img { width: 100%; height: 100%; object-fit: cover; }
 .ccard:hover img { transform: scale(1.06); }
 .ccard-ov {
   position: absolute; inset: 0;
